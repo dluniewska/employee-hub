@@ -1,0 +1,131 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          BigInt       @id @default(autoincrement())
+  email       String       @unique @db.VarChar(75)
+  firstname   String?      @db.VarChar(75)
+  lastname    String?      @db.VarChar(75)
+  position    Position     @relation(fields: [positionId], references: [id])
+  positionId  Int
+  unit        Unit         @relation(fields: [unitId], references: [id])
+  unitId      Int
+  description String       @db.VarChar(250)
+  experience  Experience[]
+  competences Competence[]
+  schedule    Schedule[]
+
+  createdAt DateTime
+  createdBy String?
+
+  updatedAt DateTime?
+  updatedBy String?
+
+  deletedAt DateTime?
+  deletedBy String?
+  deleted   Boolean   @default(false)
+}
+
+model Position {
+  id          Int    @id @default(autoincrement())
+  name        String @db.VarChar(100)
+  description String @db.VarChar(200)
+  User        User[]
+
+  createdAt DateTime
+  createdBy String?
+
+  updatedAt DateTime?
+  updatedBy String?
+
+  deletedAt DateTime?
+  deletedBy String?
+  deleted   Boolean   @default(false)
+}
+
+model Experience {
+  id          BigInt  @id @default(autoincrement())
+  name        String  @db.VarChar(100)
+  description String  @db.VarChar(200)
+  duration    Int
+  user        User    @relation(fields: [userId], references: [id])
+  userId      BigInt
+  isPrivate   Boolean @default(false)
+
+  createdAt DateTime
+  createdBy String?
+
+  updatedAt DateTime?
+  updatedBy String?
+
+  deletedAt DateTime?
+  deletedBy String?
+  deleted   Boolean   @default(false)
+}
+
+model Competence {
+  id     BigInt @id @default(autoincrement())
+  name   String @db.VarChar(100)
+  user   User   @relation(fields: [userId], references: [id])
+  userId BigInt
+
+  createdAt DateTime
+  createdBy String?
+
+  updatedAt DateTime?
+  updatedBy String?
+
+  deletedAt DateTime?
+  deletedBy String?
+  deleted   Boolean   @default(false)
+}
+
+model Unit {
+  id       Int     @id @default(autoincrement())
+  name     String? @db.VarChar(100)
+  parentId Int?
+  parent   Unit?   @relation("ParentUnit", fields: [parentId], references: [id])
+  units    Unit[]  @relation("ParentUnit")
+  users    User[]
+
+  createdAt DateTime
+  createdBy String?
+
+  updatedAt DateTime?
+  updatedBy String?
+
+  deletedAt DateTime?
+  deletedBy String?
+  deleted   Boolean   @default(false)
+}
+
+model Schedule {
+  id     BigInt   @id @default(autoincrement())
+  status Status
+  date   DateTime
+  userId BigInt
+  user   User     @relation(fields: [userId], references: [id])
+
+  createdAt DateTime
+  createdBy String?
+
+  updatedAt DateTime?
+  updatedBy String?
+
+  deletedAt DateTime?
+  deletedBy String?
+  deleted   Boolean   @default(false)
+}
+
+enum Status {
+  ONSITE
+  REMOTE
+  DELEGATION
+  ABSENT
+}

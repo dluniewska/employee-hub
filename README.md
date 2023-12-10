@@ -2,22 +2,47 @@
 
 Steps to create monorepo project architecture:
 
-1. lerna init && npm install
+1. Initialize monorepo with Lerna and install packages. Change default projects name folder from "packages" to "apps", as it better ilustrates project purpose.
+```
+lerna init && npm install
+```
 
-Initialize monorepo with Lerna and install packages. Change default projects name folder from "packages" to "apps", as it better ilustrates project purpose.
+2. Install TypeScript for project 
 
-2. npm install typescript --save-dev
+```
+npm install typescript --save-dev
+```
 
-Install TypeScript for project 
+3. Create folder manually and step into new folder. We could use *lerna create appname*, but it creates files, which we don't want.
 
-3. mkdir apps && cd apps
+```
+mkdir apps && cd apps
+```
 
-Create folder manually and step into new folder. We could use *lerna create appname*, but it creates files, which we don't want.
+4. Create backend project using Nest.js
 
-4. nest new api
+```
+nest new api
+```
 
-Create backend project using Nest.js
+5. Create frontend project using Vite.js, with options React + TypeScript
 
-5. npm create vite@latest
+```
+npm create vite@latest
+```
 
-Create frontend project using Vite.js, with options React + TypeScript
+6. Later, to install packages in specified projects, use:
+
+```
+npm install <dependency> -w <package1> -w <package2>
+```
+
+#### Prisma
+
+To create migration, use:
+
+```
+npx prisma migrate dev --name migration_name
+```
+
+**Important!** Prisma uses temporary shadow databases to create migrations, so user has to have "createdb" permission.

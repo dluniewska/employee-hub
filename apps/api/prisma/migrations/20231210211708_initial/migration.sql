@@ -42,7 +42,8 @@ CREATE TABLE "Experience" (
     "id" BIGSERIAL NOT NULL,
     "name" VARCHAR(100) NOT NULL,
     "description" VARCHAR(200) NOT NULL,
-    "duration" INTEGER NOT NULL,
+    "startDate" TIMESTAMP(3) NOT NULL,
+    "endDate" TIMESTAMP(3) NOT NULL,
     "userId" BIGINT NOT NULL,
     "isPrivate" BOOLEAN NOT NULL DEFAULT false,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -115,6 +116,9 @@ CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Position_name_key" ON "Position"("name");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Competence_name_key" ON "Competence"("name");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "_CompetenceToUser_AB_unique" ON "_CompetenceToUser"("A", "B");

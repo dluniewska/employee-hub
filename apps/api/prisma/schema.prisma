@@ -21,10 +21,10 @@ model User {
   competences Competence[]
   schedule    Schedule[]
 
-  createdAt DateTime
-  createdBy String?
+  createdAt DateTime @default(now())
+  createdBy String
 
-  updatedAt DateTime?
+  updatedAt DateTime? @updatedAt
   updatedBy String?
 
   deletedAt DateTime?
@@ -34,14 +34,14 @@ model User {
 
 model Position {
   id          Int    @id @default(autoincrement())
-  name        String @db.VarChar(100)
+  name        String @unique @db.VarChar(100)
   description String @db.VarChar(200)
   User        User[]
 
-  createdAt DateTime
-  createdBy String?
+  createdAt DateTime @default(now())
+  createdBy String
 
-  updatedAt DateTime?
+  updatedAt DateTime? @updatedAt
   updatedBy String?
 
   deletedAt DateTime?
@@ -58,10 +58,10 @@ model Experience {
   userId      BigInt
   isPrivate   Boolean @default(false)
 
-  createdAt DateTime
-  createdBy String?
+  createdAt DateTime @default(now())
+  createdBy String
 
-  updatedAt DateTime?
+  updatedAt DateTime? @updatedAt
   updatedBy String?
 
   deletedAt DateTime?
@@ -70,15 +70,14 @@ model Experience {
 }
 
 model Competence {
-  id     BigInt @id @default(autoincrement())
-  name   String @db.VarChar(100)
-  user   User   @relation(fields: [userId], references: [id])
-  userId BigInt
+  id    BigInt @id @default(autoincrement())
+  name  String @db.VarChar(100)
+  users User[]
 
-  createdAt DateTime
-  createdBy String?
+  createdAt DateTime @default(now())
+  createdBy String
 
-  updatedAt DateTime?
+  updatedAt DateTime? @updatedAt
   updatedBy String?
 
   deletedAt DateTime?
@@ -94,10 +93,10 @@ model Unit {
   units    Unit[]  @relation("ParentUnit")
   users    User[]
 
-  createdAt DateTime
-  createdBy String?
+  createdAt DateTime @default(now())
+  createdBy String
 
-  updatedAt DateTime?
+  updatedAt DateTime? @updatedAt
   updatedBy String?
 
   deletedAt DateTime?
@@ -112,10 +111,10 @@ model Schedule {
   userId BigInt
   user   User     @relation(fields: [userId], references: [id])
 
-  createdAt DateTime
-  createdBy String?
+  createdAt DateTime @default(now())
+  createdBy String
 
-  updatedAt DateTime?
+  updatedAt DateTime? @updatedAt
   updatedBy String?
 
   deletedAt DateTime?

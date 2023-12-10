@@ -1,8 +1,11 @@
 {
   "name": "root",
   "private": true,
-  "dependencies": {},
+  "workspaces": [
+    "apps/*"
+  ],
   "devDependencies": {
-    "lerna": "^7.4.2"
+    "lerna": "^7.4.2",
+    "typescript": "^5.3.3"
   }
 }

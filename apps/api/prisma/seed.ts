@@ -6,13 +6,13 @@ const prisma = new PrismaClient();
 
 async function main() {
 
+    await prisma.schedule.deleteMany({})
+    await prisma.skillsOnUsers.deleteMany({})
+    await prisma.skill.deleteMany({})
+    await prisma.experience.deleteMany({})
     await prisma.user.deleteMany({})
     await prisma.unit.deleteMany({})
     await prisma.position.deleteMany({})
-    await prisma.experience.deleteMany({})
-    await prisma.skill.deleteMany({})
-    await prisma.skillsOnUsers.deleteMany({})
-    await prisma.schedule.deleteMany({})
     
     // seed for tests, in separate objects for db provider flexibility
     const skillDotnet = await prisma.skill.create({
@@ -117,6 +117,17 @@ async function main() {
             positionId: 1,
             createdBy: "seed",
             unitId: 2,
+            experience: {
+                create: {
+                    id: 1,
+                    name: 'Software Developer at XYZ',
+                    description: "Developing software using .NET and React",
+                    startDate: moment().add(-3, "years").toDate(),
+                    endDate: moment().add(-1, "years").toDate(),
+                    isPrivate: false,
+                    createdBy: "seed",
+                }
+            },
             skills: {
                 create:
                     [
@@ -147,6 +158,28 @@ async function main() {
             positionId: 2,
             unitId: 3,
             createdBy: "seed",
+            experience: {
+                create: [
+                    {
+                        id: 2,
+                        name: 'Python Developer at ABC',
+                        description: "Developing software using Python",
+                        startDate: moment().add(-6, "years").toDate(),
+                        endDate: moment().add(-4, "years").toDate(),
+                        isPrivate: false,
+                        createdBy: "seed",
+                    },
+                    {
+                        id: 3,
+                        name: 'Data Analysts with R',
+                        description: "Creating data statistics using R language",
+                        startDate: moment().add(-4, "years").toDate(),
+                        endDate: moment().add(-3, "years").toDate(),
+                        isPrivate: false,
+                        createdBy: "seed",
+                    }
+                ]
+            },
             skills: {
                 create:
                     [
@@ -167,51 +200,11 @@ async function main() {
         },
     });
 
-    const dotDevExp = await prisma.experience.create({
-        data: {
-            id: 1,
-            name: 'Software Developer at XYZ',
-            description: "Developing software using .NET and React",
-            startDate: moment().add(-3, "years").toDate(),
-            endDate: moment().add(-1, "years").toDate(),
-            isPrivate: false,
-            createdBy: "seed",
-            userId: 1
-        }
-    });
-
-    const pythDevExp = await prisma.experience.create({
-        data: {
-            id: 2,
-            name: 'Python Developer at ABC',
-            description: "Developing software using Python",
-            startDate: moment().add(-6, "years").toDate(),
-            endDate: moment().add(-4, "years").toDate(),
-            isPrivate: false,
-            createdBy: "seed",
-            userId: 2
-        },
-    });
-
-    const dataAnExp = await prisma.experience.create({
-        data: {
-            id: 3,
-            name: 'Data Analysts with R',
-            description: "Creating data statistics using R language",
-            startDate: moment().add(-4, "years").toDate(),
-            endDate: moment().add(-3, "years").toDate(),
-            isPrivate: false,
-            createdBy: "seed",
-            userId: 2
-        }
-    });
-
 
     console.log("Skills:", { skillDotnet, skillDocker, skillVisualStudio, skillPython, skillRLanguage, skillRStudio });
     console.log("Positions:", { programmerPosition, dataAnalystPosition });
     console.log("Units:", { itDeptUnit, webDevelopersUnit, dataAnalystsUnit });
     console.log("Users:", { user1, user2 });
-    console.log("Experience:", { dotDevExp, pythDevExp, dataAnExp });
 }
 
 

@@ -1,0 +1,153 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          BigInt       @id @default(autoincrement())
+  email       String       @unique @db.VarChar(75)
+  firstname   String?      @db.VarChar(75)
+  lastname    String?      @db.VarChar(75)
+  position    Position     @relation(fields: [positionId], references: [id])
+  positionId  Int
+  unit        Unit         @relation(fields: [unitId], references: [id])
+  unitId      Int
+  description String       @db.VarChar(250)
+  experience  Experience[]
+  schedule    Schedule[]
+  skills      SkillsOnUsers[]
+
+  createdAt   DateTime @default(now())
+  createdBy   String
+
+  updatedAt   DateTime? @updatedAt
+  updatedBy   String?
+
+  deletedAt   DateTime?
+  deletedBy   String?
+  deleted     Boolean   @default(false)
+
+  @@map("Users")
+}
+
+model Skill {
+  id        BigInt @id @default(autoincrement())
+  name      String @unique @db.VarChar(100)
+  users     SkillsOnUsers[]
+
+  createdAt DateTime @default(now())
+  createdBy String
+
+  updatedAt DateTime? @updatedAt
+  updatedBy String?
+
+  deletedAt DateTime?
+  deletedBy String?
+  deleted   Boolean   @default(false)
+
+  @@map("Skills")
+}
+
+model SkillsOnUsers {
+  skill      Skill @relation(fields: [skillId], references: [id])
+  skillId    BigInt
+  user       User @relation(fields: [userId], references: [id])
+  userId     BigInt
+
+  createdAt  DateTime @default(now())
+  createdBy  String
+
+  @@id([skillId, userId])
+}
+
+model Position {
+  id          Int    @id @default(autoincrement())
+  name        String @unique @db.VarChar(100)
+  description String @db.VarChar(200)
+  User        User[]
+
+  createdAt   DateTime @default(now())
+  createdBy   String
+
+  updatedAt   DateTime? @updatedAt
+  updatedBy   String?
+
+  deletedAt   DateTime?
+  deletedBy   String?
+  deleted     Boolean   @default(false)
+
+  @@map("Positions")
+}
+
+model Experience {
+  id          BigInt   @id @default(autoincrement())
+  name        String   @db.VarChar(100)
+  description String   @db.VarChar(200)
+  startDate   DateTime
+  endDate     DateTime
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      BigInt
+  isPrivate   Boolean  @default(false)
+
+  createdAt   DateTime @default(now())
+  createdBy   String
+
+  updatedAt   DateTime? @updatedAt
+  updatedBy   String?
+
+  deletedAt   DateTime?
+  deletedBy   String?
+  deleted     Boolean   @default(false)
+}
+
+model Unit {
+  id        Int     @id @default(autoincrement())
+  name      String? @unique @db.VarChar(100)
+  parentId  Int?
+  parent    Unit?   @relation("ParentUnit", fields: [parentId], references: [id], onDelete: SetNull)
+  units     Unit[]  @relation("ParentUnit")
+  users     User[]
+
+  createdAt DateTime @default(now())
+  createdBy String
+
+  updatedAt DateTime? @updatedAt
+  updatedBy String?
+
+  deletedAt DateTime?
+  deletedBy String?
+  deleted   Boolean   @default(false)
+
+  @@map("Units")
+}
+
+model Schedule {
+  id        BigInt   @id @default(autoincrement())
+  status    Status
+  date      DateTime
+  userId    BigInt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  createdBy String
+
+  updatedAt DateTime? @updatedAt
+  updatedBy String?
+
+  deletedAt DateTime?
+  deletedBy String?
+  deleted   Boolean   @default(false)
+
+  @@map("Schedules")
+}
+
+enum Status {
+  ONSITE
+  REMOTE
+  DELEGATION
+  ABSENT
+}

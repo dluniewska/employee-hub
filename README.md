@@ -1,5 +1,42 @@
 # EMPLOYEES-HUB PROJECT
 
+> Application for company-wide employee management. Easily store and access information on schedules, experience, skills, and more. User-friendly login with customized permissions for different roles.
+
+## Technology stack
+
+**Mockup**: 
+- **Tool**: Excalidraw
+
+**Backend**:
+- **Language:** TypeScript
+- **Database**: PostgreSQL
+- **ORM**: Prisma
+- **Runtime**: Node.js
+- **Framework**: Nest.js
+	
+**Frontend**:
+- **Language**: TypeScript
+- **Framework**: React
+		
+**Serwer**:
+
+- **OS**: Linux Debian
+- **Tool**: docker i docker-compose || Ngnix
+		
+**Version Control**:
+**Tool**: Git
+**Service**: github
+
+**Architektura**: 
+- **Type**: monorepo 
+- **Architecture tool**: Lerna
+		
+
+**UML**:
+**Tool**:  Draw.io || Enterprise Architect
+**Diagrams**:  Class diagrams
+
+### Monorepo
 Steps to create monorepo project architecture:
 
 1. Initialize monorepo with Lerna and install packages. Change default projects name folder from "packages" to "apps", as it better ilustrates project purpose.
@@ -37,7 +74,7 @@ npm create vite@latest
 npm install <dependency> -w <package1> -w <package2>
 ```
 
-#### Prisma
+### Prisma
 
 To create migration, use:
 

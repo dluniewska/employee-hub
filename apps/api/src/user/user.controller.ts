@@ -10,6 +10,7 @@ import {
 } from "@nestjs/common";
 import { UserService } from "./user.services"
 import { User } from "@prisma/client";
+import bigint_stringify from "src/helpers/json_helper";
 
 @Controller("users")
 export class UsersController {
@@ -20,6 +21,7 @@ export class UsersController {
         @Query('skip') skip?: number,
         @Query('take') take?: number
     ): Promise<User[]> {
-        return await this.usersService.users({skip, take});
+        let res = await this.usersService.users({skip, take}); 
+        return bigint_stringify(res);
     }
 }

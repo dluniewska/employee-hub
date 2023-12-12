@@ -10,14 +10,14 @@ datasource db {
 model User {
   id          Int       @id @default(autoincrement())
   email       String       @unique @db.VarChar(75)
-  firstname   String?      @db.VarChar(75)
-  lastname    String?      @db.VarChar(75)
+  firstname   String      @db.VarChar(75)
+  lastname    String      @db.VarChar(75)
   phone       String?      @db.VarChar(20)
   position    Position     @relation(fields: [positionId], references: [id])
   positionId  Int
   unit        Unit         @relation(fields: [unitId], references: [id])
   unitId      Int
-  description String       @db.VarChar(250)
+  description String?       @db.VarChar(250)
   experience  Experience[]
   schedule    Schedule[]
   skills      SkillsOnUsers[]

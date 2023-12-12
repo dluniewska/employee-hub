@@ -1,16 +1,19 @@
 import {
-    Controller, 
-    Get, 
+    Controller,
+    Get,
     Param,
     Post,
     Body,
     Put,
     Delete,
     Query,
+    ParseIntPipe,
 } from "@nestjs/common";
 import { UserService } from "./user.services"
 import { User } from "@prisma/client";
-import bigint_stringify from "src/helpers/json_helper";
+import bigintStringify from "src/helpers/jsonHelper";
+import { createUserDto } from "./dto/create-user.dto";
+import { baseUserDto } from "./dto/base-user.dto";
 
 @Controller("users")
 export class UsersController {
@@ -18,10 +21,23 @@ export class UsersController {
 
     @Get()
     async getUsers(
-        @Query('skip') skip?: number,
-        @Query('take') take?: number
+        @Query('skip', ParseIntPipe) skip?: number,
+        @Query('take', ParseIntPipe) take?: number
     ): Promise<User[]> {
-        let res = await this.usersService.users({skip, take}); 
-        return bigint_stringify(res);
+        return await this.usersService.users({ skip, take });
     }
+
+    @Get(':id')
+    async getUser(
+        @Param('id', ParseIntPipe) id: number,
+    ): Promise<User | null> {
+        return await this.usersService.user({ id: id });
+    }
+
+    // @Post()
+    // async createUser(
+    //     @Body() userData: createUserDto
+    // ): Promise<baseUserDto> {
+    //     return await this.usersService.createUser({userData});
+    // }
 }

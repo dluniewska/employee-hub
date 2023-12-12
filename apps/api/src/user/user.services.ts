@@ -1,9 +1,19 @@
 import { Injectable } from '@nestjs/common';
-import { User } from '@prisma/client';
+import { User, Prisma } from '@prisma/client';
+import { PrismaService } from 'src/database/prisma.service';
 
 @Injectable()
 export class UserService {
-  getUsers(): User[] {
-    return [];
-  }
+    constructor(private prisma: PrismaService) {}
+
+    async users(params: {
+        skip?: number;
+        take?: number;
+      }): Promise<User[]> {
+        const { skip, take } = params;
+        return this.prisma.user.findMany({
+          skip,
+          take
+        });
+    }
 }

@@ -115,6 +115,7 @@ async function main() {
             lastname: "Violin",
             description: "programmer",
             positionId: 1,
+            phone: "111 111 111",
             createdBy: "seed",
             unitId: 2,
             experience: {

@@ -20,7 +20,7 @@ export class UsersController {
     constructor(private readonly usersService: UserService) { }
 
     @Get()
-    async getUsers(@Query('skip') skip?: number, @Query('take') take?: number): Promise<Partial<User>[]> {
+    async getUsers(@Query('skip', ParseIntPipe) skip?: number, @Query('take', ParseIntPipe) take?: number): Promise<Partial<User>[]> {
         return await this.usersService.users({ skip, take });
     }
 

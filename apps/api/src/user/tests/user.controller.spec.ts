@@ -19,6 +19,7 @@ describe('UsersController', () => {
         usersController = moduleRef.get<UsersController>(UsersController);
     });
 
+    //todo: reads empty array
     describe('getUsers', () => {
         it('should return an array of users', async () => {
             const result = [];

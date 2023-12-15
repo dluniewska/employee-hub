@@ -1,7 +1,14 @@
-import { Module } from '@nestjs/common';
+import { Module, ValidationPipe } from '@nestjs/common';
 import { UserModule } from './user/user.module';
+import { APP_PIPE } from '@nestjs/core';
 
 @Module({
-  imports: [UserModule]
+  imports: [UserModule],
+  providers: [
+    {
+      provide: APP_PIPE,
+      useClass: ValidationPipe,
+    },
+  ],
 })
 export class AppModule {}

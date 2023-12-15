@@ -23,5 +23,7 @@ export const baseUserSelect = {
             skill: true
         }
     },
-    experience: true
+    experience: true,
+    createdAt: true,
+    updatedAt: true
 }

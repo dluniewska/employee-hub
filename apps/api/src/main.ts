@@ -10,7 +10,6 @@ async function bootstrap() {
     .setTitle('Employee-Hub App')
     .setDescription('API of application for managing company employees')
     .setVersion('1.0')
-    .addTag('employees')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

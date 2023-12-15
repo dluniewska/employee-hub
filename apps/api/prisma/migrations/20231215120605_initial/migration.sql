@@ -8,6 +8,7 @@ CREATE TABLE "Users" (
     "firstname" VARCHAR(75) NOT NULL,
     "lastname" VARCHAR(75) NOT NULL,
     "phone" VARCHAR(20),
+    "room" VARCHAR(15),
     "positionId" INTEGER NOT NULL,
     "unitId" INTEGER NOT NULL,
     "description" VARCHAR(250),

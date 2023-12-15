@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { User, Prisma } from '@prisma/client';
 import { PrismaService } from 'src/database/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -30,17 +30,21 @@ export class UserService {
         return users;
     }
 
-    async user(userWhereUniqueInput: Prisma.UserWhereUniqueInput): Promise<Partial<User> | null> {
-        const user =  this.prisma.user.findUnique({
+    async user(where: Prisma.UserWhereUniqueInput): Promise<Partial<User>> {
+        const user = await this.prisma.user.findUnique({
             select: baseUserSelect,
-            where: userWhereUniqueInput,
+            where
         });
+
+        if (!user) {
+            throw new NotFoundException(`User with id: ${where.id} was not found`);
+        }
 
         return user;
     }
 
     async createUser(user: CreateUserDto): Promise<Partial<User>> {
-        return this.prisma.user.create({
+        return await this.prisma.user.create({
             select: baseUserSelect,
             data: {
                 firstname: user.firstname,
@@ -57,15 +61,32 @@ export class UserService {
         });
     }
 
-    async updateUser(where: Prisma.UserWhereUniqueInput, updateUserDto: UpdateUserDto): Promise<Partial<User>> {
-        return await this.prisma.user.update({
+    async updateUser(where: Prisma.UserWhereUniqueInput, updateUserDto: UpdateUserDto) {  
+        const user = await this.prisma.user.findUnique({
+            where
+        });
+
+        if (!user) {
+            throw new NotFoundException(`User with id: ${where.id} was not found`);
+        }
+        
+        await this.prisma.user.update({
             data: updateUserDto,
             where
         })
+
     }
 
-    async deletePost(where: Prisma.UserWhereUniqueInput): Promise<Partial<User>> {
-        return this.prisma.user.update({
+    async deletePost(where: Prisma.UserWhereUniqueInput) {
+        const user = await this.prisma.user.findUnique({
+            where
+        });
+
+        if (!user) {
+            throw new NotFoundException(`User with id: ${where.id} was not found`);
+        }
+
+        await this.prisma.user.update({
             data: {
                 deleted: true,
                 deletedBy: "test",

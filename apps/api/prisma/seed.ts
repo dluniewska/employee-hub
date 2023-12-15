@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import * as moment from "moment";
+import { experiences, positions, skills, skillsOnUsers, units, users } from './seed.models';
 
 // initialize Prisma Client
 const prisma = new PrismaClient();
@@ -13,199 +13,37 @@ async function main() {
     await prisma.user.deleteMany({})
     await prisma.unit.deleteMany({})
     await prisma.position.deleteMany({})
-    
-    // seed for tests, in separate objects for db provider flexibility
-    const skillDotnet = await prisma.skill.create({
-        data: {
-            id: 1,
-            name: ".NET",
-            createdBy: "seed"
-        }
+
+    const skillsData = await prisma.skill.createMany({
+        data: skills
     });
 
-    const skillDocker = await prisma.skill.create({
-        data: {
-            id: 2,
-            name: "Docker",
-            createdBy: "seed"
-        }
+    const positionsData = await prisma.position.createMany({
+        data: positions
     });
 
-    const skillVisualStudio = await prisma.skill.create({
-        data: {
-            id: 3,
-            name: "Visual Studio",
-            createdBy: "seed"
-        },
+    const unitsData = await prisma.unit.createMany({
+        data: units
     });
 
-    const skillPython = await prisma.skill.create({
-        data: {
-            id: 4,
-            name: "Python",
-            createdBy: "seed"
-        }
+    const usersData = await prisma.user.createMany({
+        data: users
     });
 
-    const skillRLanguage = await prisma.skill.create({
-        data: {
-            id: 5,
-            name: "R Language",
-            createdBy: "seed"
-        }
+    const experiencesData = await prisma.experience.createMany({
+        data: experiences
     });
 
-    const skillRStudio = await prisma.skill.create({
-        data: {
-            id: 6,
-            name: "RStudio",
-            createdBy: "seed"
-        }
+    const skillsOnUsersData = await prisma.skillsOnUsers.createMany({
+        data: skillsOnUsers
     });
 
-    const programmerPosition = await prisma.position.create({
-        data: {
-            id: 1,
-            name: ".NET Developer",
-            description: "Backend developer in .NET",
-            createdBy: "seed"
-        }
-    });
-
-    const dataAnalystPosition = await prisma.position.create({
-        data: {
-            id: 2,
-            name: "Data Analyst - Python",
-            description: "Data Analyst using Python",
-            createdBy: "seed"
-        }
-    });
-
-    const itDeptUnit = await prisma.unit.create({
-        data: {
-            id: 1,
-            name: "IT Department",
-            createdBy: "seed"
-        }
-    });
-
-    const webDevelopersUnit = await prisma.unit.create({
-        data: {
-            id: 2,
-            name: "Web Developers",
-            createdBy: "seed",
-            parentId: 1
-        }
-    });
-
-    const dataAnalystsUnit = await prisma.unit.create({
-        data: {
-            id: 3,
-            name: "Data Analysts",
-            createdBy: "seed",
-            parentId: 1
-        }
-    });
-
-    const user1 = await prisma.user.create({
-        data: {
-            id: 1,
-            email: 'j.violin@test.com',
-            firstname: "John",
-            lastname: "Violin",
-            description: "programmer",
-            positionId: 1,
-            phone: "111 111 111",
-            createdBy: "seed",
-            unitId: 2,
-            experience: {
-                create: {
-                    id: 1,
-                    name: 'Software Developer at XYZ',
-                    description: "Developing software using .NET and React",
-                    startDate: moment().add(-3, "years").toDate(),
-                    endDate: moment().add(-1, "years").toDate(),
-                    isPrivate: false,
-                    createdBy: "seed",
-                }
-            },
-            skills: {
-                create:
-                    [
-                        {
-                            skillId: 1,
-                            createdBy: "seed"
-                        },
-                        {
-                            skillId: 2,
-                            createdBy: "seed"
-                        },
-                        {
-                            skillId: 3,
-                            createdBy: "seed"
-                        }
-                    ]
-            }
-        },
-    });
-
-    const user2 = await prisma.user.create({
-        data: {
-            id: 2,
-            email: 'j.vengerberg@test.com',
-            firstname: "Jenna",
-            lastname: "Vengerberg",
-            description: "Data Analyst",
-            positionId: 2,
-            unitId: 3,
-            createdBy: "seed",
-            experience: {
-                create: [
-                    {
-                        id: 2,
-                        name: 'Python Developer at ABC',
-                        description: "Developing software using Python",
-                        startDate: moment().add(-6, "years").toDate(),
-                        endDate: moment().add(-4, "years").toDate(),
-                        isPrivate: false,
-                        createdBy: "seed",
-                    },
-                    {
-                        id: 3,
-                        name: 'Data Analysts with R',
-                        description: "Creating data statistics using R language",
-                        startDate: moment().add(-4, "years").toDate(),
-                        endDate: moment().add(-3, "years").toDate(),
-                        isPrivate: false,
-                        createdBy: "seed",
-                    }
-                ]
-            },
-            skills: {
-                create:
-                    [
-                        {
-                            skillId: 4,
-                            createdBy: "seed"
-                        },
-                        {
-                            skillId: 5,
-                            createdBy: "seed"
-                        },
-                        {
-                            skillId: 6,
-                            createdBy: "seed"
-                        }
-                    ]
-            }
-        },
-    });
-
-
-    console.log("Skills:", { skillDotnet, skillDocker, skillVisualStudio, skillPython, skillRLanguage, skillRStudio });
-    console.log("Positions:", { programmerPosition, dataAnalystPosition });
-    console.log("Units:", { itDeptUnit, webDevelopersUnit, dataAnalystsUnit });
-    console.log("Users:", { user1, user2 });
+    console.log("Skills:", skillsData);
+    console.log("Positions:", positionsData);
+    console.log("Units:", unitsData);
+    console.log("Users:", usersData );
+    console.log("Experience:", experiencesData );
+    console.log("SkillsOnUsers:", skillsOnUsersData );
 }
 
 

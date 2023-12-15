@@ -1,18 +1,18 @@
 import { Controller, Get, Param, Post, Body, Put, Delete, Query,ParseIntPipe, UseFilters } from "@nestjs/common";
-import { UserService } from "./user.services"
+import { UsersService } from "./user.services"
 import { User } from "@prisma/client";
-import bigintStringify from "src/helpers/jsonHelper";
+import bigintStringify from "./../helpers/jsonHelper";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { ApiCreatedResponse, ApiTags } from "@nestjs/swagger";
 import { UserEntity } from "./entities/user.entity";
-import { PrismaClientExceptionFilter } from "src/database/prisma-client-exception.filter";
+import { PrismaClientExceptionFilter } from "./../database/prisma-client-exception.filter";
 
 @Controller("users")
 @ApiTags("users")
 @UseFilters(PrismaClientExceptionFilter)
 export class UsersController {
-    constructor(private readonly usersService: UserService) { }
+    constructor(private readonly usersService: UsersService) { }
 
     @Get()
     @ApiCreatedResponse({ type: UserEntity, isArray: true })

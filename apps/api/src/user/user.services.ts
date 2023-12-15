@@ -33,7 +33,7 @@ export class UsersService {
     async user(where: Prisma.UserWhereUniqueInput): Promise<Partial<User>> {
         const user = await this.prisma.user.findUnique({
             select: baseUserSelect,
-            where
+            where: { ...where, deleted: false}
         });
 
         if (!user) {
@@ -63,7 +63,7 @@ export class UsersService {
 
     async updateUser(where: Prisma.UserWhereUniqueInput, updateUserDto: UpdateUserDto) {  
         const user = await this.prisma.user.findUnique({
-            where
+            where: { ...where, deleted: false}
         });
 
         if (!user) {
@@ -79,7 +79,7 @@ export class UsersService {
 
     async deletePost(where: Prisma.UserWhereUniqueInput) {
         const user = await this.prisma.user.findUnique({
-            where
+            where: { ...where, deleted: false}
         });
 
         if (!user) {

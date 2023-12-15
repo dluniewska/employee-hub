@@ -13,6 +13,7 @@ model User {
   firstname   String          @db.VarChar(75)
   lastname    String          @db.VarChar(75)
   phone       String?         @db.VarChar(20)
+  room        String?         @db.VarChar(15)
   position    Position        @relation(fields: [positionId], references: [id])
   positionId  Int
   unit        Unit            @relation(fields: [unitId], references: [id])

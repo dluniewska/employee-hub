@@ -3,39 +3,13 @@ import { User, Prisma } from '@prisma/client';
 import { PrismaService } from 'src/database/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { baseUserSelect } from './queries/base-user.select';
+import { allUserSelect } from './queries/all-users.select';
 
 @Injectable()
 export class UserService {
 
     constructor(private prisma: PrismaService) { }
-
-    baseUser = {
-        id: true,
-        email: true,
-        firstname: true,
-        lastname: true,
-        phone: true,
-        position: {
-            select: {
-                id: true,
-                name: true
-            }
-        },
-        unit: {
-            select: {
-                id: true,
-                name: true,
-                parentId: true
-            }
-        },
-        description: true,
-        skills: {
-            select: {
-                skill: true
-            }
-        },
-        experience: true
-    }
 
     async users(params: {
         skip?: number;
@@ -46,21 +20,7 @@ export class UserService {
     }): Promise<Partial<User>[]> {
         const { skip, take, cursor, where, orderBy } = params;
         let users = await this.prisma.user.findMany({
-            select: {
-                id: true,
-                firstname: true,
-                lastname: true,
-                position: {
-                    select: {
-                        name: true
-                    }
-                },
-                unit: {
-                    select: {
-                        name: true
-                    }
-                }
-            },
+            select: allUserSelect,
             skip,
             take,
             cursor,
@@ -71,15 +31,17 @@ export class UserService {
     }
 
     async user(userWhereUniqueInput: Prisma.UserWhereUniqueInput): Promise<Partial<User> | null> {
-        return this.prisma.user.findUnique({
-            select: this.baseUser,
+        const user =  this.prisma.user.findUnique({
+            select: baseUserSelect,
             where: userWhereUniqueInput,
         });
+
+        return user;
     }
 
     async createUser(user: CreateUserDto): Promise<Partial<User>> {
         return this.prisma.user.create({
-            select: this.baseUser,
+            select: baseUserSelect,
             data: {
                 firstname: user.firstname,
                 lastname: user.lastname,
@@ -95,19 +57,15 @@ export class UserService {
         });
     }
 
-    async updateUser(id: number, updateUserDto: UpdateUserDto): Promise<Partial<User>> {
+    async updateUser(where: Prisma.UserWhereUniqueInput, updateUserDto: UpdateUserDto): Promise<Partial<User>> {
         return await this.prisma.user.update({
-            select: this.baseUser,
             data: updateUserDto,
-            where: { id: id }
+            where
         })
     }
 
     async deletePost(where: Prisma.UserWhereUniqueInput): Promise<Partial<User>> {
         return this.prisma.user.update({
-            select: {
-                id: true
-            },
             data: {
                 deleted: true,
                 deletedBy: "test",

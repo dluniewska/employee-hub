@@ -26,7 +26,7 @@ export class UsersController {
 
     @Get(':id')
     async getUser(@Param('id', ParseIntPipe) id: number): Promise<Partial<User> | null> {
-        return bigintStringify(await this.usersService.user({ id: id }));
+        return bigintStringify(await this.usersService.user({ id }));
     }
 
     @Post()
@@ -36,7 +36,7 @@ export class UsersController {
 
     @Put(':id')
     async update(@Param('id', ParseIntPipe) id: number, @Body() updateUserDto: UpdateUserDto) {
-        return bigintStringify(await this.usersService.updateUser(id, updateUserDto));
+        return bigintStringify(await this.usersService.updateUser({ id }, updateUserDto));
     }
 
     @Delete(':id')

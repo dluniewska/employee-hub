@@ -3,13 +3,15 @@ CREATE TYPE "Status" AS ENUM ('ONSITE', 'REMOTE', 'DELEGATION', 'ABSENT');
 
 -- CreateTable
 CREATE TABLE "Users" (
-    "id" BIGSERIAL NOT NULL,
+    "id" SERIAL NOT NULL,
     "email" VARCHAR(75) NOT NULL,
-    "firstname" VARCHAR(75),
-    "lastname" VARCHAR(75),
+    "firstname" VARCHAR(75) NOT NULL,
+    "lastname" VARCHAR(75) NOT NULL,
+    "phone" VARCHAR(20),
+    "room" VARCHAR(15),
     "positionId" INTEGER NOT NULL,
     "unitId" INTEGER NOT NULL,
-    "description" VARCHAR(250) NOT NULL,
+    "description" VARCHAR(250),
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "createdBy" TEXT NOT NULL,
     "updatedAt" TIMESTAMP(3),
@@ -39,7 +41,7 @@ CREATE TABLE "Skills" (
 -- CreateTable
 CREATE TABLE "SkillsOnUsers" (
     "skillId" BIGINT NOT NULL,
-    "userId" BIGINT NOT NULL,
+    "userId" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "createdBy" TEXT NOT NULL,
 
@@ -69,7 +71,7 @@ CREATE TABLE "Experience" (
     "description" VARCHAR(200) NOT NULL,
     "startDate" TIMESTAMP(3) NOT NULL,
     "endDate" TIMESTAMP(3) NOT NULL,
-    "userId" BIGINT NOT NULL,
+    "userId" INTEGER NOT NULL,
     "isPrivate" BOOLEAN NOT NULL DEFAULT false,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "createdBy" TEXT NOT NULL,
@@ -103,7 +105,7 @@ CREATE TABLE "Schedules" (
     "id" BIGSERIAL NOT NULL,
     "status" "Status" NOT NULL,
     "date" TIMESTAMP(3) NOT NULL,
-    "userId" BIGINT NOT NULL,
+    "userId" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "createdBy" TEXT NOT NULL,
     "updatedAt" TIMESTAMP(3),

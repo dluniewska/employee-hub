@@ -5,7 +5,7 @@ import Navbar from "../ui/Navbar";
 const MainTemplate = () => {
 
     return (
-        <div className="h-screen">
+        <div className="w-screen h-screen m-0 p-0 overflow-hidden">
             <Navbar />
             <EmployeeHubProvider>
                 <Outlet />

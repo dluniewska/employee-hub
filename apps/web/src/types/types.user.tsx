@@ -1,3 +1,6 @@
+import { Position } from "./types.position";
+import { Unit } from "./types.unit";
+
 export interface IUser {
     id: number;
     email: string;
@@ -6,7 +9,9 @@ export interface IUser {
     phone: string;
     room: string;
     positionId: number;
+    position: Position;
     unitId: number;
+    unit: Unit;
     description: string;
     createdAt: Date;
     createdBy: string;

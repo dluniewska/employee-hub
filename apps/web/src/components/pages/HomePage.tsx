@@ -14,7 +14,7 @@ const HomePage = () => {
   }, [])
 
   return (
-    <div className="h-screen w-screen bg-gradient-to-r from-slate-700 to-cyan-700">
+    <div className="h-screen w-screen">
       <Grid users={users} />
     </div>
   )

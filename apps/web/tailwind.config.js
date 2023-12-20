@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "pastel-bg": "url('./src/assets/bg-pastel.svg')"
+      }
+    },
   },
   plugins: [],
 }

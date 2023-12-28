@@ -4,7 +4,6 @@ const paths = [
     './src/assets/avatars/hotdog.svg',
     './src/assets/avatars/pug.svg',
     './src/assets/avatars/red-cat.svg',
-    './src/assets/avatars/tiger.svg',
     './src/assets/avatars/snail.svg',
 ]
 

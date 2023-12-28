@@ -1,15 +1,15 @@
 import { GridProps } from "../../types/props/types.gridProps"
-import Card from "./Card"
+import UserCard from "./UserCard"
 
 const Grid = ({ users }: GridProps) => {
     return (
         <div className="text-gray-900">
-            <h1 className="font-medium text-lg p-8">Pracownicy</h1>
+            <h1 className="font-bold text-4xl p-2 text-center mt-10 text-gray-100">Pracownicy</h1>
             <div className="h-full flex flex-col p-5 items-center">
                 <div className="w-2/3">
                     {
                         users.map(user => (
-                            <Card key={user.id} user={user} />
+                            <UserCard key={user.id} user={user} />
                         ))
                     }
                 </div>

@@ -1,34 +1,47 @@
-import Chicken from '../../assets/chicken.svg?react'
+import { useNavigate } from 'react-router-dom';
 import SearchIcon from '../../assets/search-icon.svg?react'
 
 const Navbar = () => {
 
-    return (
-        <div className='bg-red-300/50'>
-            <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-                <div className="relative flex h-16 items-center justify-between align-middle">
-                    
-                    <Chicken className='h-20 w-20' />
+    let navigate = useNavigate();
 
-                    <div className="xl:w-96">
+
+    const handleLoginClick = () => {
+        navigate(`/login`);
+    }
+
+    const handleLogoClick = () => {
+        navigate(`/`);
+    }
+    
+    return (
+        <div className="shadow-sm backdrop-blur-sm bg-white/60 text-stone-900-950">
+            <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+                <div className="relative flex flex-wrap h-16 items-center justify-between align-middle">
+                    
+                    <div onClick={() => handleLogoClick()} className="text-xl font-sans font-bold subpixel-antialiased flex-1">
+                        EmployeesHub
+                    </div>
+
+                    <div className="xl:w-96 flex-1 flex-row">
                         <div className="relative flex w-full flex-wrap items-stretch">
                             <input
                                 type="search"
-                                className="relative m-0 block flex-auto rounded border border-solid border-gray-100 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-slate-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-gray-50 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-gray-100 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+                                className="relative m-0 block flex-auto rounded border border-solid border-gray-500 bg-transparent bg-clip-padding px-3 py-[0.25rem] leading-[1.6] outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-amber-950 focus:shadow-md focus:outline-none"
                                 placeholder="Search"
                                 aria-label="Search"
                                 aria-describedby="button-search" />
 
                             <span
-                                className="input-group-text flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center text-base font-normal text-neutral-700 dark:text-neutral-200"
+                                className="input-group-text flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center hover:translate-x-2 hover:scale-110 duration-150"
                                 id="button-search">
-                                <SearchIcon />
+                                <SearchIcon className='fill-current' />
                             </span>
                         </div>
                     </div>
 
-                    <div className='text-gray-100'>
-                        Zaloguj
+                    <div onClick={() => handleLoginClick()} className="w-full flex-1 text-end">
+                        <p>Zaloguj</p>
                     </div>
                 </div>
             </div>

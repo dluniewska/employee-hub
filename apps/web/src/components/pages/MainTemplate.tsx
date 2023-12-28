@@ -5,9 +5,9 @@ import Navbar from "../ui/Navbar";
 const MainTemplate = () => {
 
     return (
-        <div className="w-screen h-screen m-0 p-0 overflow-hidden bg-pastel-bg">
-            <Navbar />
+        <div className="relative w-screen h-screen m-0 p-0 overflow-hidden bg-pastel-color">
             <EmployeeHubProvider>
+                <Navbar />
                 <Outlet />
             </EmployeeHubProvider>
         </div>

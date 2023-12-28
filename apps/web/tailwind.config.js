@@ -8,9 +8,6 @@ module.exports = {
     './src/**/*.{ts,tsx}',
 	],
   theme: {
-    backgroundImage: {
-      'pastel-bg': "url('./src/assets/bg-pastel.svg')",
-    },
     container: {
       center: true,
       padding: "2rem",
@@ -19,7 +16,11 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage: {
+        'pastel-bg': "url('./src/assets/bg-pastel.svg')",
+      },
       colors: {
+        'pastel-color': '#e6cfc5',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

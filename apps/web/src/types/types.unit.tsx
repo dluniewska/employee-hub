@@ -1,3 +1,3 @@
-export interface Unit {
+export type Unit = {
     name: string
 }

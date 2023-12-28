@@ -1,7 +1,7 @@
 import { Position } from "./types.position";
 import { Unit } from "./types.unit";
 
-export interface IUser {
+export type IUser = {
     id: number;
     email: string;
     firstname: string;

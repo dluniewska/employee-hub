@@ -1,3 +1,3 @@
-export interface Position {
+export type Position = {
     name: string
 }

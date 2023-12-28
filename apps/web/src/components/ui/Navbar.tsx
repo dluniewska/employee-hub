@@ -23,7 +23,7 @@ const Navbar = () => {
                         EmployeesHub
                     </div>
 
-                    <div className="xl:w-96 flex-1 flex-row">
+                    <div className="xl:w-96 flex-1 flex-row min-w-fit">
                         <div className="relative flex w-full flex-wrap items-stretch">
                             <input
                                 type="search"

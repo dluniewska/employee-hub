@@ -15,5 +15,17 @@ export const usersService = {
                 console.log(err);
                 return err;
             });
+    },
+
+    async getUser(id: number): Promise<IUser> {
+
+        return await axiosInstance.get(`${URN}/${id}`)
+            .then((res) => {
+                return res.data;
+            })
+            .catch((err) => {
+                console.log(err);
+                return err;
+            });
     }
 }

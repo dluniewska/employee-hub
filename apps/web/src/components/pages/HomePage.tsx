@@ -11,7 +11,7 @@ const HomePage = () => {
       usersService.getUsers(10,0).then((res) => {
         setUsers(res);
       })
-  }, [])
+    }, [])
 
   return (
     <div className="h-screen w-screen">

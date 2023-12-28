@@ -1,6 +1,6 @@
 import { IUser } from "../types.user";
 
-export interface IEmployeeHubContextType {
+export type IEmployeeHubContextType = {
     users:IUser[],
     setUsers:(data:IUser[]) => void
 }

@@ -3,6 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import ArrowForward from '../../assets/arrow-forward.svg?react'
 import { GetRandomAvatarPath } from '@/helpers/AvatarHelper';
 import { useNavigate } from 'react-router-dom';
+import { UserPageLocationProps } from '@/types/props/types.userPageLocationProps';
 
 const UserCard = ({ user }: UserCardProps) => {
 
@@ -10,7 +11,7 @@ const UserCard = ({ user }: UserCardProps) => {
     let path = GetRandomAvatarPath();
 
     const handleArrowClick = (id: number) => {
-        navigate(`/users/${id}`);
+        navigate(`/users/${id}`, { state: { id, path } as UserPageLocationProps });
     }
 
     return (

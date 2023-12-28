@@ -15,7 +15,7 @@ const Navbar = () => {
     }
     
     return (
-        <div className="shadow-sm backdrop-blur-sm bg-white/60 text-stone-900-950">
+        <div className="shadow-sm backdrop-blur-sm bg-pastel-brown-color/25 text-pastel-dark-brown-color">
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                 <div className="relative flex flex-wrap h-16 items-center justify-between align-middle">
                     

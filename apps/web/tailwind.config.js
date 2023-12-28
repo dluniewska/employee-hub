@@ -21,6 +21,13 @@ module.exports = {
       },
       colors: {
         'pastel-color': '#e6cfc5',
+        'pastel-light-green-color': '#cedad1',
+        'pastel-brown-color': '#e4cdac',
+        'pastel-pink-color': '#e6cfc5',
+        'pastel-orange-color': '#e2af6f',
+        'pastel-mud-color': '#82844e',
+        'pastel-beige-color': '#ece1d5',
+        'pastel-dark-brown-color': '#271c0c',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

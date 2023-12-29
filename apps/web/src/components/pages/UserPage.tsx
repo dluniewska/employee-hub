@@ -24,7 +24,7 @@ const UserPage = () => {
 
   return (
     <div className="flex flex-row flex-wrap-reverse overflow-y-auto bg-scroll h-screen">
-      <div className="h-screen basis-full md:basis-3/5 flex flex-col justify-center px-8 overflow-y-auto bg-scroll">
+      <div className="h-screen basis-full md:basis-3/4 flex flex-col justify-center px-8 overflow-y-auto bg-scroll">
         <Accordion type="multiple" defaultValue={["skills", "experience"]}>
           <AccordionItem value="skills">
             <AccordionTrigger className="text-xl text-pastel-dark-brown-color font-semibold underline decoration-2 decoration-pastel-mud-color">Umiejętności</AccordionTrigger>
@@ -41,10 +41,10 @@ const UserPage = () => {
         </Accordion>
       </div>
 
-      <div className="flex flex-col px-8 h-screen basis-full md:basis-2/5 bg-pastel-pink-color/60 overflow-y-auto bg-scroll">
+      <div className="flex flex-col px-8 h-screen basis-full md:basis-1/4 bg-pastel-pink-color/60 overflow-y-auto bg-scroll">
         <Avatar className="flex justify-center mt-10">
-          <AvatarImage className='p-5 bg-white rounded-full w-40 h-40 shadow-md overflow-visible' src={path} />
-          <AvatarFallback className="w-40 h-40">{user ? `${Array.from(user?.firstname ?? "0")[0]}${Array.from(user?.lastname ?? "0")[0]}` : "noname"}</AvatarFallback>
+          <AvatarImage className='p-5 bg-white rounded-full w-24 h-24 shadow-md overflow-visible' src={path} />
+          <AvatarFallback className="w-24 h-24">{user ? `${Array.from(user?.firstname ?? "0")[0]}${Array.from(user?.lastname ?? "0")[0]}` : "noname"}</AvatarFallback>
         </Avatar>
 
         {user && <UserBasicData user={user} />}
@@ -61,12 +61,12 @@ const UserBasicData = ({ user }: { user: User }) => {
     <div className="flex flex-col my-5">
       <div className="w-max mx-auto">
         <div className="flex flex-col flex-wrap w-full">
-          <div className="text-3xl font-bold text-center">{user?.firstname} {user?.lastname}</div>
-          <div className="mt-1 ml-1 italic text-center">{user?.email}</div>
+          <div className="text-2xl font-bold text-center">{user?.firstname} {user?.lastname}</div>
+          <div className="mt-1 ml-1 text-sm italic text-center">{user?.email}</div>
         </div>
         <div className="flex flex-col mt-5 w-full" >
-          <div className="text-lg text-center">{user?.position?.name}</div>
-          <div className="text-pastel-mud-color text-center">{user?.unit?.name}</div>
+          <div className="text-sm text-center">{user?.position?.name}</div>
+          <div className="text-pastel-mud-color text-sm text-center">{user?.unit?.name}</div>
         </div>
       </div>
     </div>
@@ -76,10 +76,10 @@ const UserBasicData = ({ user }: { user: User }) => {
 const UserDetails = ({ user }: { user: User }) => {
   return (
     <div className="w-3/4 p-6 mt-7 ">
-      <div className="text-xl font-bold underline decoration-2 decoration-pastel-mud-color mb-5">O mnie:</div>
+      <div className="text-lg font-bold underline decoration-2 decoration-pastel-mud-color mb-5">O mnie:</div>
       <div>
-        {user?.room && <div><span className="font-bold">Pokój:</span> {user?.room}</div>}
-        {user?.phone && <div><span className="font-bold">Telefon:</span> {user?.phone}</div>}
+        {user?.room && <div><span className="text-sm font-bold">Pokój:</span> {user?.room}</div>}
+        {user?.phone && <div><span className="text-sm font-bold">Telefon:</span> {user?.phone}</div>}
         {user?.description && <div className="mt-5 font-light">{user?.description}</div>}
       </div>
 

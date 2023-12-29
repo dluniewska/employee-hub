@@ -5,7 +5,7 @@ const Grid = ({ users }: GridProps) => {
     return (
         <div className="text-gray-900">
             <div className="h-full flex flex-col p-5 items-center">
-                <div className="w-2/3">
+                <div className="w-1/2">
                     {
                         users.map(user => (
                             <UserCard key={user.id} user={user} />

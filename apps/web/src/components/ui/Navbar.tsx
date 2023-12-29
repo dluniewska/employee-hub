@@ -27,7 +27,7 @@ const Navbar = () => {
                         <div className="relative flex w-full flex-wrap items-stretch">
                             <input
                                 type="search"
-                                className="relative m-0 block flex-auto rounded border border-solid border-gray-500 bg-transparent bg-clip-padding px-3 py-[0.25rem] leading-[1.6] outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-amber-950 focus:shadow-md focus:outline-none"
+                                className="relative m-0 block flex-auto rounded border border-solid border-gray-500 bg-gray-100 bg-clip-padding px-3 py-[0.25rem] leading-[1.6] outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-amber-950 focus:shadow-md focus:outline-none"
                                 placeholder="Search"
                                 aria-label="Search"
                                 aria-describedby="button-search" />

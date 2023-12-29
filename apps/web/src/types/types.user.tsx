@@ -3,7 +3,7 @@ import { Position } from "./types.position";
 import { Skill } from "./types.skill";
 import { Unit } from "./types.unit";
 
-export type IUser = {
+export type User = {
     id: number;
     email: string;
     firstname: string;

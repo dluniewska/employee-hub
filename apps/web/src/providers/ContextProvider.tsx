@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, createContext } from 'react';
-import { IUser } from '../types/types.user';
+import { User } from '../types/types.user';
 import { IEmployeeHubContextType } from '../types/providers/types.employeeHubContext';
 
 
@@ -10,7 +10,7 @@ export const EmployeeHubContext = createContext<IEmployeeHubContextType>({
 
 
 export const EmployeeHubProvider = ({ children }: PropsWithChildren<{}>) => {
-    const [users, setUsers] = React.useState<IUser[]>([])
+    const [users, setUsers] = React.useState<User[]>([])
 
     return(
         <EmployeeHubContext.Provider value={{ users, setUsers }}>

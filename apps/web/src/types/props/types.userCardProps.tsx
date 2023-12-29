@@ -1,6 +1,6 @@
-import { IUser } from "../types.user"
+import { User } from "../types.user"
 
 export type UserCardProps = {
     key: number,
-    user: IUser
+    user: User
 }

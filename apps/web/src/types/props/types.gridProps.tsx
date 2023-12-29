@@ -1,5 +1,5 @@
-import { IUser } from "../types.user"
+import { User } from "../types.user"
 
 export type GridProps = {
-    users: IUser[] 
+    users: User[] 
 }

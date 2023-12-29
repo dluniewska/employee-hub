@@ -1,11 +1,11 @@
-import { IUser } from "../../types/types.user";
+import { User } from "../../types/types.user";
 import { axiosInstance } from "./axios-instance";
 
 const URN = "/users";
 
 export const usersService = {
 
-    async getUsers(take: number, skip: number): Promise<IUser[]> {
+    async getUsers(take: number, skip: number): Promise<User[]> {
 
         return await axiosInstance.get(`${URN}?take=${take}&skip=${skip}`)
             .then((res) => {
@@ -17,7 +17,7 @@ export const usersService = {
             });
     },
 
-    async getUser(id: number): Promise<IUser> {
+    async getUser(id: number): Promise<User> {
 
         return await axiosInstance.get(`${URN}/${id}`)
             .then((res) => {

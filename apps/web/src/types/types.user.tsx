@@ -1,4 +1,6 @@
+import { Experience } from "./types.experience";
 import { Position } from "./types.position";
+import { Skill } from "./types.skill";
 import { Unit } from "./types.unit";
 
 export type IUser = {
@@ -13,6 +15,8 @@ export type IUser = {
     unitId: number;
     unit: Unit;
     description: string;
+    skills: Skill[],
+    experience: Experience[],
     createdAt: Date;
     createdBy: string;
     updatedAt: Date;

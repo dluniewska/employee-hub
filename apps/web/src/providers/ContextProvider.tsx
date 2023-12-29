@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, createContext } from 'react';
-import { User } from '../types/types.user';
+import type { User } from '@/types/types.user';
 import { IEmployeeHubContextType } from '../types/providers/types.employeeHubContext';
 
 

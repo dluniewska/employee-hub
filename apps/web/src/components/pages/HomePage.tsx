@@ -2,16 +2,22 @@ import { useContext, useEffect } from "react";
 import { EmployeeHubContext } from "../../providers/ContextProvider";
 import { usersService } from "../services/usersService";
 import Grid from "../ui/Grid";
+import { useSearch } from "@/hooks/useSearch";
+import { filterUsersByName } from "@/helpers/UsersHelper";
 
 const HomePage = () => {
 
     const { users, setUsers } = useContext(EmployeeHubContext)
+    const { searchString } = useSearch();
 
     useEffect(() => {
       usersService.getUsers(10,0).then((res) => {
-        setUsers(res);
+        let filteredUsers = filterUsersByName(res, searchString);
+        setUsers(filteredUsers);
       })
-    }, [])
+    }, [searchString])
+
+    console.log(searchString)
 
   return (
     <div className="h-screen w-screen">

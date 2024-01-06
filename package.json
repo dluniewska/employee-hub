@@ -4,6 +4,12 @@
   "workspaces": [
     "apps/*"
   ],
+  "scripts": {
+    "api:start": "cd ./apps/api/ & nest start",
+    "api:start:dev": "cd ./apps/api/ & nest start --watch",
+    "api:start:debug": "cd ./apps/api/ & nest start --debug --watch",
+    "web:dev": "cd ./apps/web/ & vite"
+  },
   "devDependencies": {
     "lerna": "^7.4.2",
     "typescript": "^5.3.3"

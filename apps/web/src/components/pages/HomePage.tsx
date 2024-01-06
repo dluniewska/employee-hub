@@ -1,9 +1,9 @@
 import { useContext, useEffect } from "react";
-import { EmployeeHubContext } from "@providers/ContextProvider";
-import { usersService } from "@services/usersService";
-import Grid from "@ui/Grid";
-import { useSearch } from "@hooks/useSearch";
-import { filterUsersByName } from "@helpers/UsersHelper";
+import { EmployeeHubContext } from "~providers/ContextProvider";
+import { usersService } from "~services/usersService";
+import Grid from "~ui/Grid";
+import { useSearch } from "~hooks/useSearch";
+import { filterUsersByName } from "~helpers/UsersHelper";
 
 const HomePage = () => {
 

@@ -1,9 +1,9 @@
-import { UserCardProps } from '@propstypes/types.userCardProps'
-import { Avatar, AvatarFallback, AvatarImage } from "@ui/avatar"
-import ArrowForward from '@assets/arrow-forward.svg?react'
-import { GetRandomAvatarPath } from '@helpers/AvatarHelper';
+import { UserCardProps } from '~types/props/types.userCardProps'
+import { Avatar, AvatarFallback, AvatarImage } from "~ui/avatar"
+import ArrowForward from '~assets/arrow-forward.svg?react'
+import { GetRandomAvatarPath } from '~helpers/AvatarHelper';
 import { useNavigate } from 'react-router-dom';
-import { UserPageLocationProps } from '@propstypes/types.userPageLocationProps';
+import { UserPageLocationProps } from '~types/props/types.userPageLocationProps';
 
 const UserCard = ({ user }: UserCardProps) => {
 

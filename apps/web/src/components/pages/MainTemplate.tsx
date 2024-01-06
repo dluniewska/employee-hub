@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom"
-import { EmployeeHubProvider } from "@providers/ContextProvider";
-import Navbar from "@ui/Navbar";
+import { EmployeeHubProvider } from "~providers/ContextProvider";
+import Navbar from "~ui/Navbar";
 import { useState } from "react";
 
 const MainTemplate = () => {

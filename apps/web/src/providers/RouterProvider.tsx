@@ -1,8 +1,8 @@
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider as RootProvider } from "react-router-dom"
 import MainTemplate from "../components/pages/MainTemplate";
-import HomePage from "../components/pages/HomePage";
-import UserPage from "@/components/pages/UserPage";
-import LoginPage from "@/components/pages/LoginPage";
+import HomePage from "~components/pages/HomePage";
+import UserPage from "~components/pages/UserPage";
+import LoginPage from "~components/pages/LoginPage";
 
 export const RouterProvider = () => {
     const router = createBrowserRouter(

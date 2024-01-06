@@ -1,5 +1,5 @@
-import { GridProps } from "@propstypes/types.gridProps"
-import UserCard from "@ui/UserCard"
+import { GridProps } from "~types/props/types.gridProps"
+import UserCard from "~ui/UserCard"
 
 const Grid = ({ users }: GridProps) => {
     return (

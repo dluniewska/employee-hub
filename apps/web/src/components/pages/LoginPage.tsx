@@ -1,6 +1,6 @@
-import {LoginCard, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@components/ui/loginCard"
-import { Label } from "@ui/label"
-import { Input } from "@ui/input"
+import {LoginCard, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "~ui/loginCard"
+import { Label } from "~ui/label"
+import { Input } from "~ui/input"
 
 const LoginPage = () => {
 

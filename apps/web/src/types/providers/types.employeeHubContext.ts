@@ -1,4 +1,4 @@
-import type { User } from '@/types/types.user';
+import type { User } from '@models/types.user';
 
 export type IEmployeeHubContextType = {
     users:User[],

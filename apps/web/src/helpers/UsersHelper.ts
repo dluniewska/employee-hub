@@ -1,4 +1,4 @@
-import { User } from "@/types/types.user";
+import { User } from "@models/types.user";
 
 export function filterUsersByName(users: User[], searchTerm: string): User[] {
     const lowerCaseSearchTerm = searchTerm.toLowerCase();

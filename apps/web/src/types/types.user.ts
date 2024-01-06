@@ -1,7 +1,7 @@
-import { Experience } from "./types.experience";
-import { Position } from "./types.position";
-import { Skill } from "./types.skill";
-import { Unit } from "./types.unit";
+import type { Experience } from "@models/types.experience";
+import type { Position } from "@models/types.position";
+import type { Skill } from "@models/types.skill";
+import type { Unit } from "@models/types.unit";
 
 export type User = {
     id: number;

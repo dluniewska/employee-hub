@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import SearchIcon from '@/assets/search-icon.svg?react'
-import { Button } from "@/components/ui/button"
+import SearchIcon from '@assets/search-icon.svg?react'
+import { Button } from "@ui/button"
 
 const Navbar = ({ setSearchString }: { setSearchString: React.Dispatch<React.SetStateAction<string>> }) => {
 

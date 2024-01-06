@@ -1,4 +1,4 @@
-import { User } from "../../types/types.user";
+import { User } from "@models/types.user";
 import { axiosInstance } from "./axios-instance";
 
 const URN = "/users";

@@ -27,18 +27,27 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@pages/*": ["./src/components/pages/*"],
+      "@services/*": ["./src/components/services/*"],
+      "@ui/*": ["./src/components/ui/*"],
+      "@helpers/*": ["./src/helpers/*"],
+      "@models/*": ["./src/types/*"],
+      "@provtypes/*": ["./src/types/providers/*"],
+      "@propstypes/*": ["./src/types/props/*"],
+      "@providers/*": ["./src/providers/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@hooks/*": ["./src/hooks/*"],
     },
   },
   "include": [
     "./src/**/*.ts",
     "./src/**/*.tsx",
     "./src/**/*d.ts",
-    "./custom.d.ts"
+    "./custom.d.ts", 
   ],
   "exclude": [
     "./src/**/*.spec.ts",

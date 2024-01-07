@@ -1,19 +1,43 @@
 import { Knex } from 'knex';
+require('dotenv').config();
 
-const config: Knex.Config = {
+// Common settings for development and production
+const commonConfig: Knex.Config = {
   client: 'pg',
-  connection: {
-    host: '127.0.0.1',
-    user: 'empl_hub',
-    password: 'zaq1@WSX',
-    database: 'EmployeeHubDb'
-  },
   migrations: {
-    directory: './src/database/migrations'
+    directory: './src/database/migrations',
   },
   seeds: {
-    directory: './src/database/seeds'
+    directory: './src/database/seeds',
   },
 };
 
-export default config;
+// Development specific configuration
+const development: Knex.Config = {
+  ...commonConfig,
+  connection: {
+    host: process.env.DEV_DB_HOST,
+    user: process.env.DEV_DB_USER,
+    password: process.env.DEV_DB_PWD,
+    database: process.env.DEV_DB_NAME,
+  },
+};
+
+// Production specific configuration
+const production: Knex.Config = {
+  ...commonConfig,
+  connection: {
+    host: process.env.PROD_DB_HOST,
+    user: process.env.PROD_DB_USER,
+    password: process.env.PROD_DB_PWD,
+    database: process.env.PROD_DB_NAME,
+    ssl: { rejectUnauthorized: false }, // Adjust SSL settings as per your DB's requirement
+  },
+  pool: { min: 2, max: 10 }, // Connection pool settings
+};
+
+// Directly export the configuration object
+export default {
+  development,
+  production,
+};

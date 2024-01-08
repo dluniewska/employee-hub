@@ -10,7 +10,7 @@
     "api:start:debug": "cd ./apps/api/ & nest start --debug --watch",
     "auth:start:dev": "cd ./apps/auth/ & nest start --watch",
     "auth:start:debug": "cd ./apps/auth/ & nest start --debug --watch",
-    "web:start": "cd ./apps/web/ & vite",
+    "web:start": "cd ./apps/web/ & vite"
   },
   "devDependencies": {
     "lerna": "^7.4.2",

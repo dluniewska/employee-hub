@@ -1,7 +1,7 @@
 // auth.service.ts
-import { Injectable, Inject } from '@nestjs/common';
+import { Injectable, Inject, ExecutionContext } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
-import { Observable } from 'rxjs';
+import { Observable, firstValueFrom, timeout } from 'rxjs';
 import { LoginCredentialsDto, TokenResponseDto } from 'shared-types';
 
 @Injectable()
@@ -14,5 +14,12 @@ export class AuthService {
 
   authme(token: string) {
     return this.client.send<boolean, string>({ cmd: 'authme' }, token);
+  }
+
+  validateUser(context: ExecutionContext) {
+    const req = context.switchToHttp().getRequest();
+    const res = firstValueFrom(
+      this.client.send({ role: 'auth', cmd: 'check' }, { jwt: req.headers['authorization']?.split(' ')[1] }).pipe(timeout(5000)));
+    return res;
   }
 }

@@ -3,6 +3,8 @@ import { AuthService } from './auth.services'
 import { KnexModule } from 'src/database/knex.module';
 import { AuthController } from './auth.controller';
 import { JwtModule } from '@nestjs/jwt';
+import { LocalStrategy } from './strategies/local.strategy';
+import { JwtStrategy } from './strategies/jwt.strategy';
 
 @Module({
   imports: [
@@ -12,7 +14,7 @@ import { JwtModule } from '@nestjs/jwt';
       signOptions: { expiresIn: '60m' },
     }),
   ],
-  providers: [AuthService],
+  providers: [AuthService, LocalStrategy, JwtStrategy],
   controllers: [AuthController]
 })
 export class AuthModule {}

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { User } from '../types/types.user';
 import { KnexService } from 'src/database/knex.service';
-import { BaseUserDto, LoginCredentialsDto } from 'shared-types';
+import { BaseUserDto, LoginCredentialsDto, TokenResponseDto } from 'shared-types';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 
@@ -20,7 +20,7 @@ export class AuthService {
         return await bcrypt.compare(plainPassword, hashedPassword);
     }
 
-    async login(credentials: LoginCredentialsDto): Promise<BaseUserDto | null> {
+    async validateUser(credentials: LoginCredentialsDto): Promise<BaseUserDto | null> {
         let user = await this.getUser(credentials.username)
         let isValidPwd = await this.comparePassword(credentials.password, user.password);
         let res: BaseUserDto | null = null;
@@ -31,17 +31,32 @@ export class AuthService {
         return res;
     }
 
-    async authme(token: string) {
+    async login(user: BaseUserDto): Promise<TokenResponseDto> {
+        const accessToken = await this.createToken(user.id, user.username, user.role, user.email);
+        return { user: user, token: accessToken }
+    }
+
+    async validateToken(jwt: string) {
         try {
-            const decoded = this.jwtService.verify(token);
+            let res = await this.jwtService.verify(jwt);
+            return res;
+        }
+        catch (e) {
+            console.log(e)
+        }
+    }
+
+    async authme(jwt: string) {
+        try {
+            const decoded = this.jwtService.verify(jwt);
             return { status: true, data: decoded };
         } catch (error) {
             return { status: false, message: 'Invalid or expired token' };
         }
     }
 
-    async createToken(userId: number, username: string, role: string, email: string): Promise<string> {
-        const payload = { sub: userId, username };
+    private async createToken(userId: number, username: string, role: string, email: string): Promise<string> {
+        const payload = { sub: userId, username, email, role };
         return this.jwtService.sign(payload);
     }
 

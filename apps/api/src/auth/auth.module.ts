@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
+import { AuthGuard } from 'src/auth/guards/auth.guard';
 
 @Module({
   imports: [
@@ -20,7 +21,8 @@ import { AuthController } from './auth.controller';
       },
     ]),
   ],
-  providers: [AuthService],
-  controllers: [AuthController]
+  providers: [AuthService, AuthGuard],
+  controllers: [AuthController],
+  exports: [AuthService]
 })
 export class AuthModule {}

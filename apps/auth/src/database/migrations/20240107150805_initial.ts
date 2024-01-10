@@ -1,5 +1,5 @@
 import type { Knex } from 'knex';
-import { Roles } from '../../types/enums.roles';
+import { Roles } from 'shared-types';
 
 export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable('auth', (table) => {

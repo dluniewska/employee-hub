@@ -14,6 +14,7 @@ export default defineConfig({
       "~pages": path.resolve(__dirname, "./src/components/pages"),
       "~services": path.resolve(__dirname, "./src/components/services"),
       "~ui": path.resolve(__dirname, "./src/components/ui"),
+      "~common": path.resolve(__dirname, "./src/components/common"),
       "~helpers": path.resolve(__dirname, "./src/helpers"),
       "~types": path.resolve(__dirname, "./src/types/"),
       "~providers": path.resolve(__dirname, "./src/providers"),

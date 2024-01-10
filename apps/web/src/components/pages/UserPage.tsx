@@ -6,9 +6,9 @@ import type { User } from "~types/types.user"
 import { Experience } from "~types/types.experience"
 import { getDuration } from "~helpers/DateTimeHelper"
 import { Skill } from "~types/types.skill"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "~ui/accordion"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "~ui/Accordion"
 import { Avatar } from "@radix-ui/react-avatar"
-import { AvatarFallback, AvatarImage } from "~ui/avatar"
+import { AvatarFallback, AvatarImage } from "~ui/Avatar"
 
 const UserPage = () => {
 

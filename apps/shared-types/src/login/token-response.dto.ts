@@ -1,3 +1,6 @@
+import { BaseUserDto } from "../user"
+
 export type TokenResponseDto = {
-    token: string;
+    user: BaseUserDto
+    token: string
 }

@@ -1,8 +1,7 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { User } from '../types/types.user';
 import { KnexService } from 'src/database/knex.service';
-import { LoginCredentialsDto } from 'shared-types';
-import { TokenResponseDto } from 'shared-types';
+import { BaseUserDto, LoginCredentialsDto } from 'shared-types';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 
@@ -21,15 +20,24 @@ export class AuthService {
         return await bcrypt.compare(plainPassword, hashedPassword);
     }
 
-    async validateUser(credentials: LoginCredentialsDto): Promise<User | null> {
+    async login(credentials: LoginCredentialsDto): Promise<BaseUserDto | null> {
         let user = await this.getUser(credentials.username)
         let isValidPwd = await this.comparePassword(credentials.password, user.password);
-        let res: User | null = null;
+        let res: BaseUserDto | null = null;
 
         if (isValidPwd) {
-            res = user;
+            res = this.parseToBaseUserDto(user);
         }
         return res;
+    }
+
+    async authme(token: string) {
+        try {
+            const decoded = this.jwtService.verify(token);
+            return { status: true, data: decoded };
+        } catch (error) {
+            return { status: false, message: 'Invalid or expired token' };
+        }
     }
 
     async createToken(userId: number, username: string, role: string, email: string): Promise<string> {
@@ -38,15 +46,23 @@ export class AuthService {
     }
 
     private async getUser(username: string): Promise<User | null> {
-        let user = null;
+        let user: User = null;
         try {
-            user = await this.knexService.knex('auth').where('username', username).first();
+            user = await this.knexService.knex('auth')
+                .select('id', 'email', 'username', 'role', 'password')
+                .where('username', username)
+                .first() as User;
         }
-        catch(e) {
-            console.error("Error while retrieving orders");
+        catch (e) {
+            console.error("Error while retrieving user");
             console.log(e)
         }
-        
+
         return user;
     }
+
+    parseToBaseUserDto = (user: User): BaseUserDto => {
+        const { password, ...userWithoutPassword } = user;
+        return userWithoutPassword;
+    };
 }

@@ -2,11 +2,11 @@ import { Controller, Get, Param, Post, Body, Put, Delete, Query,ParseIntPipe, Us
 import { UsersService } from "./user.services"
 import { User } from "@prisma/client";
 import bigintStringify from "./../helpers/jsonHelper";
+import { ApiCreatedResponse, ApiTags } from "@nestjs/swagger";
+import { PrismaClientExceptionFilter } from "./../database/prisma-client-exception.filter";
+import { UserEntity } from "./entities/user.entity";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
-import { ApiCreatedResponse, ApiTags } from "@nestjs/swagger";
-import { UserEntity } from "./entities/user.entity";
-import { PrismaClientExceptionFilter } from "./../database/prisma-client-exception.filter";
 
 @Controller("users")
 @ApiTags("users")

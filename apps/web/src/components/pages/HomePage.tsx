@@ -1,9 +1,9 @@
 import { useContext, useEffect } from "react";
 import { EmployeeHubContext } from "~providers/ContextProvider";
 import { usersService } from "~services/usersService";
-import Grid from "~ui/Grid";
-import { useSearch } from "~hooks/useSearch";
+import Grid from "~common/Grid";
 import { filterUsersByName } from "~helpers/UsersHelper";
+import { useSearch } from "~hooks/useSearch";
 
 const HomePage = () => {
 
@@ -17,7 +17,7 @@ const HomePage = () => {
       })
     }, [searchString])
 
-    console.log(searchString)
+    console.log(users)
 
   return (
     <div className="h-screen w-screen">

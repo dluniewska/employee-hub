@@ -1,5 +1,5 @@
 {
-  "include": ["src"],            // Specify files to be included in compilation
+  "include": ["src", "../auth/src/types/token-response.dto.ts"],            // Specify files to be included in compilation
   "exclude": ["node_modules"],    // Exclude node_modules from compilation
   "compilerOptions": {
     "target": "es6",             // Set ECMAScript target version

@@ -3,18 +3,16 @@ import { AuthService } from './auth.services'
 import { KnexModule } from 'src/database/knex.module';
 import { AuthController } from './auth.controller';
 import { JwtModule } from '@nestjs/jwt';
-import { LocalStrategy } from './strategies/local.strategy';
-import { JwtStrategy } from './strategies/jwt.strategy';
 
 @Module({
   imports: [
     KnexModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET,
-      signOptions: { expiresIn: '60m' },
+      signOptions: { expiresIn: process.env.JWT_EXPIRES_IN },
     }),
   ],
-  providers: [AuthService, LocalStrategy, JwtStrategy],
+  providers: [AuthService],
   controllers: [AuthController]
 })
 export class AuthModule {}

@@ -19,7 +19,6 @@ const useUsersService = () => {
     }
 
     async function getUser(id: number): Promise<User> {
-        const axios = useAxios()
 
         return await axios.get(`${URN}/${id}`)
             .then((res) => {

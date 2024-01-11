@@ -21,14 +21,13 @@ export class AuthService {
     }
 
     async validateUser(credentials: LoginCredentialsDto): Promise<BaseUserDto | null> {
-        let user = await this.getUser(credentials.username)
-        let isValidPwd = await this.comparePassword(credentials.password, user.password);
-        let res: BaseUserDto | null = null;
+        const user = await this.getUser(credentials.username);
 
-        if (isValidPwd) {
-            res = this.parseToBaseUserDto(user);
-        }
-        return res;
+        if (!user) return null;
+
+        const isValidPwd = await this.comparePassword(credentials.password, user.password);
+
+        return isValidPwd ? this.parseToBaseUserDto(user) : null;
     }
 
     async login(user: BaseUserDto): Promise<TokenResponseDto> {

@@ -1,14 +1,22 @@
 import React, { createContext, useState, useEffect, useCallback } from "react";
 import { IAuthContext } from "~/types/providers/types.authContext";
 import { BaseUserDto, TokenResponseDto } from "shared-types";
-import { apiAxiosInstance } from "~/components/services/apiService";
+import { ApiResponse } from "~types/types.apiResponse";
+import { AxiosError } from "axios";
+import useAxios from "~/hooks/useAxios";
+
+const initialApiResponse: ApiResponse = {
+  status: 0,
+  data: null, 
+  message: "" 
+};
 
 const defaultContextValue: IAuthContext = {
   user: null,
   token: null,
-  login: async () => { },
+  login: () => Promise.resolve(initialApiResponse),
   logout: async () => { },
-  authme: async () => { },
+  authme: async () => 0
 };
 
 // Create the context
@@ -17,6 +25,7 @@ export const AuthContext = createContext<IAuthContext>(defaultContextValue);
 export const AuthProvider = ({ children }: { children: React.ReactNode | React.ReactNode[] }) => {
   const [user, setUser] = useState<BaseUserDto | null>(null);
   const [token, setToken] = useState<string | null>(null);
+  const axios = useAxios();
 
   // Load initial auth state from localStorage
   useEffect(() => {
@@ -28,12 +37,20 @@ export const AuthProvider = ({ children }: { children: React.ReactNode | React.R
   }, []);
 
   // Login function
-  const login = useCallback(async (username: string, password: string): Promise<void> => {
-    try {
-      const response = await apiAxiosInstance.post('/auth/login', { username, password });
-      const { user, token } = response.data as TokenResponseDto;
+  const login = useCallback(async (username: string, password: string): Promise<ApiResponse> => {
+    let status = 500;
+    let message: string = ""
+    let data: any = null;
 
-      console.log("dame", user, token)
+    try {
+      const res = await axios.post('/auth/login', { username, password });
+      const { user, token } = res.data as TokenResponseDto;
+
+      status = res.status;
+      message = res.statusText;
+      data = res.data;
+
+      console.log("login", user, token)
 
       setUser(user);
       setToken(token);
@@ -41,32 +58,42 @@ export const AuthProvider = ({ children }: { children: React.ReactNode | React.R
       localStorage.setItem('user', JSON.stringify(user));
       localStorage.setItem('token', JSON.stringify(token));
 
-    } catch (error) {
-      console.error('Login failed:', error);
+    } 
+    catch (e) {
+      message = "Error while logging user"
+      if (e instanceof AxiosError) {
+        console.log(e)
+        status = e.response?.status ?? 500;  
+        message = e.message
+      }
     }
-  }, [user, token]);
+    return {status, data, message}
+
+  }, []);
 
 
   // Logout function
   const logout = useCallback(async () => {
-    // Implement logout logic
-    // Update state and localStorage
+    try {
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+      setUser(null);
+      setToken(null);
+    }
+    catch (e) {
+      console.error("Logout failed", e)
+    }
+    
   }, []);
-
-  const validateUser = useCallback(async () => {
-    // Implement logout logic
-    // Update state and localStorage
-  }, []);
-
 
   // Authme function
-  const authme = useCallback(async (token: string): Promise<void> => {
-    const response = await apiAxiosInstance.get('/auth/authme', {
+  const authme = useCallback(async (token: string): Promise<number> => {
+    const res = await axios.get('/auth/authme', {
       headers: {
         'Authorization': `Bearer ${token}`
       }
     });
-
+    return res.status;
   }, []);
 
   const contextValue: IAuthContext = {

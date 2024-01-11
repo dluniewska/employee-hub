@@ -7,9 +7,17 @@ const Navbar = ({ setSearchString }: { setSearchString: React.Dispatch<React.Set
 
     const navigate = useNavigate();
     const { token } = useAuth();
+    const { logout } = useAuth();
 
     const handleLogoClick = () => {
-        navigate(`/`);
+        navigate("/");
+    }
+
+    const handleLogoutClick = async () => {
+        await logout()
+            .then(() => {
+                navigate("/login")
+            })
     }
 
     return (
@@ -40,6 +48,13 @@ const Navbar = ({ setSearchString }: { setSearchString: React.Dispatch<React.Set
                             </div>
                         </div>
 
+                    }
+
+                    {
+                        token != null &&
+                        <div className="w-full flex-1 text-end">
+                            <Button onClick={() => handleLogoutClick()} variant="hidden">Wyloguj</Button>
+                        </div>
                     }
                 </div>
             </div>

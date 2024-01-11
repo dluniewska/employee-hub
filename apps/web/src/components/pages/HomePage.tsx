@@ -1,17 +1,18 @@
 import { useContext, useEffect } from "react";
 import { EmployeeHubContext } from "~providers/ContextProvider";
-import { usersService } from "~services/usersService";
 import Grid from "~common/Grid";
 import { filterUsersByName } from "~helpers/UsersHelper";
 import { useSearch } from "~hooks/useSearch";
+import useUsersService from "~hooks/useUsersService";
 
 const HomePage = () => {
 
     const { users, setUsers } = useContext(EmployeeHubContext)
-    const { searchString } = useSearch();
+    const { searchString } = useSearch()
+    const { getUsers } = useUsersService();
 
     useEffect(() => {
-      usersService.getUsers(10,0).then((res) => {
+      getUsers(10,0).then((res) => {
         let filteredUsers = filterUsersByName(res, searchString);
         setUsers(filteredUsers);
       })

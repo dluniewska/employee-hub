@@ -16,7 +16,7 @@ const defaultContextValue: IAuthContext = {
   token: null,
   login: () => Promise.resolve(initialApiResponse),
   logout: async () => { },
-  authme: async () => 0
+  authme: async () => { }
 };
 
 // Create the context
@@ -87,13 +87,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode | React.R
   }, []);
 
   // Authme function
-  const authme = useCallback(async (token: string): Promise<number> => {
-    const res = await axios.get('/auth/authme', {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    });
-    return res.status;
+  const authme = useCallback(async () => {
+    const storedUser = localStorage.getItem("user");
+    const storedJwt = localStorage.getItem("token");
+
+    if (storedUser) setUser(JSON.parse(storedUser));
+    if (storedJwt) setToken(JSON.parse(storedJwt));
   }, []);
 
   const contextValue: IAuthContext = {

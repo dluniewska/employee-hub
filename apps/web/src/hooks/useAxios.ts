@@ -18,20 +18,16 @@ const useAxios = (): AxiosInstance => {
         });
 
         instance.interceptors.response.use(
-            (response: AxiosResponse) => {
-                return response;
-            },
+            (response: AxiosResponse) => response,
             async (error: AxiosError) => {
-                const originalRequest: {content: InternalAxiosRequestConfig<any> | any, _retry: Boolean} = { content: error?.config, _retry: false };
-                console.log(error)
+                const originalRequest = error.config as InternalAxiosRequestConfig<any>;
 
-                if ((error.response?.status === 401 || error.response?.status === 403) && !error?.config?.url?.includes('/auth') && !originalRequest._retry) {
-                    originalRequest._retry = true;
-                    return instance.request(originalRequest.content);
-                } 
-                else if (!error?.config?.url?.includes('/auth')) {
-                    // return window.location.href = "/login"
+                if ((error.response?.status === 401 || error.response?.status === 403) && !originalRequest.url?.includes('/auth')) {
+                    localStorage.removeItem('user');
+                    localStorage.removeItem('token');
+                    window.location.href = "/login";
                 }
+
                 return error.response;
             }
         );

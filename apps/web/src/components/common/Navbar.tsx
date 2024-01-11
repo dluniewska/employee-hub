@@ -56,14 +56,14 @@ const Navbar = ({ setSearchString }: { setSearchString: React.Dispatch<React.Set
 
                     {
                         token != null &&
-                        <div className="w-full flex-1 text-end">
-                            <Button onClick={() => handleUnitsClick()} variant="secondary">Jednostki</Button>
-                        </div>
-                    }
-                    {
-                        token != null &&
-                        <div className="w-full flex-1 text-end">
-                            <Button onClick={() => handleLogoutClick()} variant="hidden">Wyloguj</Button>
+                        <div className="w-full flex-1 flex flex-row justify-end">
+                            <div className="text-end">
+                                <Button onClick={() => handleUnitsClick()} variant="secondary">Zespoły</Button>
+                            </div>
+
+                            <div className="text-end">
+                                <Button onClick={() => handleLogoutClick()} variant="hidden">Wyloguj</Button>
+                            </div>
                         </div>
                     }
                 </div>

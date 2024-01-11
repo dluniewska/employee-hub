@@ -6,5 +6,5 @@ export type IAuthContext = {
     token: string | null,
     login: ((username: string, password: string) => Promise<ApiResponse>),
     logout: (() => Promise<void>),
-    authme: ((token: string) => Promise<number>),
+    authme: (() => Promise<void>),
   };

@@ -22,7 +22,7 @@ const HomePage = () => {
 
   return (
     <div className="h-full w-screen">
-      <div className="flex flex-row h-screen">
+      <div className="flex flex-row h-screen"> 
         <div className="basis-3/4 overflow-visible">
           <UsersList users={users} />
         </div>

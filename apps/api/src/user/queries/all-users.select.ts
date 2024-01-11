@@ -10,6 +10,7 @@ export const allUserSelect = {
     },
     unit: {
         select: {
+            id: true,
             name: true
         }
     }

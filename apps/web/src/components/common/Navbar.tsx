@@ -20,6 +20,10 @@ const Navbar = ({ setSearchString }: { setSearchString: React.Dispatch<React.Set
             })
     }
 
+    const handleUnitsClick = async () => {
+        navigate("/units")
+    }
+
     return (
         <div className="shadow-sm backdrop-blur-sm bg-pastel-brown-color/25 text-pastel-dark-brown-color">
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -50,6 +54,12 @@ const Navbar = ({ setSearchString }: { setSearchString: React.Dispatch<React.Set
 
                     }
 
+                    {
+                        token != null &&
+                        <div className="w-full flex-1 text-end">
+                            <Button onClick={() => handleUnitsClick()} variant="secondary">Jednostki</Button>
+                        </div>
+                    }
                     {
                         token != null &&
                         <div className="w-full flex-1 text-end">

@@ -4,6 +4,7 @@ import HomePage from "~components/pages/HomePage";
 import UserPage from "~components/pages/UserPage";
 import LoginPage from "~components/pages/LoginPage";
 import PrivateRoute from "~helpers/PrivateRoute";
+import UnitsPage from "~components/pages/UnitsPage";
 
 
 export const RouterProvider = () => {
@@ -12,7 +13,8 @@ export const RouterProvider = () => {
             <Route element={<MainTemplate />}>
                 <Route element={<PrivateRoute />}>
                     <Route path="/" element={<HomePage />} />
-                    <Route path="users/:id" element={<UserPage />} />
+                    <Route path="/users/:id" element={<UserPage />} />
+                    <Route path="/units" element={<UnitsPage />} />
                 </Route>
                 <Route path="/login" element={<LoginPage />} />
             </Route>

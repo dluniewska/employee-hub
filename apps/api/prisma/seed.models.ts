@@ -1,161 +1,227 @@
 import * as moment from "moment";
 
 export const skills = [
-    {
-        id: 1,
-        name: ".NET",
-        createdBy: "seed"
-    },
-    {
-        id: 2,
-        name: "Docker",
-        createdBy: "seed"
-    },
-    {
-        id: 3,
-        name: "Visual Studio",
-        createdBy: "seed"
-    },
-    {
-        id: 4,
-        name: "Python",
-        createdBy: "seed"
-    },
-    {
-        id: 5,
-        name: "R Language",
-        createdBy: "seed"
-    },
-    {
-        id: 6,
-        name: "RStudio",
-        createdBy: "seed"
-    }
+    { id: 1, name: ".NET", createdBy: "seed" },
+    { id: 2, name: "Docker", createdBy: "seed" },
+    { id: 3, name: "Visual Studio", createdBy: "seed" },
+    { id: 4, name: "Python", createdBy: "seed" },
+    { id: 5, name: "R Language", createdBy: "seed" },
+    { id: 6, name: "RStudio", createdBy: "seed" },
+    { id: 7, name: 'JavaScript', createdBy: 'seed' },
+    { id: 8, name: 'React', createdBy: 'seed' },
+    { id: 9, name: 'Node.js', createdBy: 'seed' },
+    { id: 10, name: 'Angular', createdBy: 'seed' },
+    { id: 11, name: 'Vue.js', createdBy: 'seed' },
+    { id: 12, name: 'Swift', createdBy: 'seed' },
+    { id: 13, name: 'Kotlin', createdBy: 'seed' },
+    { id: 14, name: 'Java', createdBy: 'seed' },
+    { id: 15, name: 'C#', createdBy: 'seed' },
+    { id: 16, name: 'Ruby', createdBy: 'seed' },
+    { id: 17, name: 'SQL', createdBy: 'seed' },
+    { id: 18, name: 'NoSQL', createdBy: 'seed' },
+    { id: 19, name: 'PHP', createdBy: 'seed' },
+    { id: 20, name: 'HTML5', createdBy: 'seed' },
+    { id: 21, name: 'CSS3', createdBy: 'seed' },
+    { id: 22, name: 'TypeScript', createdBy: 'seed' },
+    { id: 23, name: 'Go', createdBy: 'seed' },
+    { id: 24, name: 'Rust', createdBy: 'seed' },
+    { id: 25, name: 'C++', createdBy: 'seed' },
+    { id: 26, name: 'Perl', createdBy: 'seed' }
 
 ]
 
 export const positions = [
-    {
-        id: 1,
-        name: ".NET Developer",
-        description: "Backend developer in .NET",
-        createdBy: "seed"
-    },
-    {
-        id: 2,
-        name: "Data Analyst - Python",
-        description: "Data Analyst using Python",
-        createdBy: "seed"
-    }
+    { id: 1, name: "Deweloper .NET", description: "Deweloper backendu w .NET", createdBy: "seed" },
+    { id: 2, name: "Analityk Danych - Python", description: "Analityk Danych korzystający z Pythona", createdBy: "seed" },
+    { id: 3, name: 'Deweloper Frontendu', description: 'Deweloper specjalizujący się w technologiach frontendowych', createdBy: 'seed' },
+    { id: 4, name: 'Deweloper Full Stack', description: 'Deweloper biegły zarówno w frontendzie jak i backendzie', createdBy: 'seed' },
+    { id: 5, name: 'Deweloper Mobilny - Android', description: 'Deweloper aplikacji na Androida', createdBy: 'seed' },
+    { id: 6, name: 'Deweloper Mobilny - iOS', description: 'Deweloper aplikacji na iOS', createdBy: 'seed' },
+    { id: 7, name: 'Inżynier DevOps', description: 'Inżynier skupiający się na rozwoju i operacjach', createdBy: 'seed' },
+    { id: 8, name: 'Inżynier Machine Learning', description: 'Specjalista od uczenia maszynowego i AI', createdBy: 'seed' },
+    { id: 9, name: 'Data Scientist', description: 'Ekspert w analizie danych i modelowaniu', createdBy: 'seed' },
+    { id: 10, name: 'Architekt Chmury', description: 'Projektant usług i architektury chmurowej', createdBy: 'seed' },
+    { id: 11, name: 'Analityk Cyberbezpieczeństwa', description: 'Analityk skupiający się na aspektach bezpieczeństwa', createdBy: 'seed' },
+    { id: 12, name: 'Administrator Baz Danych', description: 'Administrator systemów bazodanowych', createdBy: 'seed' },
+    { id: 13, name: 'Analityk Systemów', description: 'Analityk systemów komputerowych i sieci', createdBy: 'seed' },
+    { id: 14, name: 'Web Designer', description: 'Projektant specjalizujący się w interfejsach webowych', createdBy: 'seed' },
+    { id: 15, name: 'Inżynier Zapewnienia Jakości', description: 'Inżynier dbający o jakość oprogramowania', createdBy: 'seed' },
+    { id: 16, name: 'Kierownik Projektu', description: 'Menadżer projektów rozwoju oprogramowania', createdBy: 'seed' },
+    { id: 17, name: 'Analityk Biznesowy', description: 'Analityk łączący potrzeby biznesowe i technologię', createdBy: 'seed' },
+    { id: 18, name: 'Inżynier Sieciowy', description: 'Inżynier skupiający się na infrastrukturze sieciowej', createdBy: 'seed' },
+    { id: 19, name: 'Technical Writer', description: 'Autor specjalizujący się w dokumentacji technicznej', createdBy: 'seed' },
+    { id: 20, name: 'Projektant UX/UI', description: 'Projektant skupiający się na doświadczeniu i interfejsach użytkownika', createdBy: 'seed' },
+    { id: 21, name: 'Deweloper Blockchain', description: 'Deweloper specjalizujący się w technologii blockchain', createdBy: 'seed' },
+    { id: 22, name: 'Deweloper AR/VR', description: 'Deweloper aplikacji rozszerzonej i wirtualnej rzeczywistości', createdBy: 'seed' },
+    { id: 23, name: 'Menadżer HR', description: 'Menadżer nadzorujący działalność HR', createdBy: 'seed' },
+    { id: 24, name: 'Księgowy', description: 'Profesjonalista zajmujący się sprawami finansowymi', createdBy: 'seed' },
+    { id: 25, name: 'Specjalista ds. Marketingu', description: 'Ekspert w strategiach i kampaniach marketingowych', createdBy: 'seed' },
+    { id: 26, name: 'Przedstawiciel Handlowy', description: 'Profesjonalista odpowiedzialny za sprzedaż i relacje z klientami', createdBy: 'seed' },
+    { id: 27, name: 'Przedstawiciel ds. Obsługi Klienta', description: 'Specjalista ds. relacji z klientami i wsparcia', createdBy: 'seed' },
+    { id: 28, name: 'Asystent Administracyjny', description: 'Asystent zajmujący się zadaniami administracyjnymi', createdBy: 'seed' },
+    { id: 29, name: 'Kierownik Operacyjny', description: 'Menadżer odpowiedzialny za nadzór nad operacjami', createdBy: 'seed' },
+    { id: 30, name: 'Analityk Łańcucha Dostaw', description: 'Analityk skupiający się na zarządzaniu łańcuchem dostaw', createdBy: 'seed' },
+    { id: 31, name: 'Menadżer Produktu', description: 'Menadżer odpowiedzialny za rozwój produktu i strategię', createdBy: 'seed' },
+    { id: 32, name: 'Grafik', description: 'Projektant specjalizujący się w tworzeniu treści wizualnych', createdBy: 'seed' }
 ]
 
 export const units = [
-    {
-        id: 1,
-        name: "IT Department",
-        createdBy: "seed"
-    },
-    {
-        id: 2,
-        name: "Web Developers",
-        createdBy: "seed",
-        parentId: 1
-    },
-    {
-        id: 3,
-        name: "Data Analysts",
-        createdBy: "seed",
-        parentId: 1
-    }
+    { id: 1, name: 'Zarząd', parentId: null, createdBy: 'seed' },
+    { id: 2, name: 'IT', parentId: 1, createdBy: 'seed' },
+    { id: 3, name: 'Programiści', parentId: 2, createdBy: 'seed' },
+    { id: 4, name: 'Administratorzy Systemów', parentId: 2, createdBy: 'seed' },
+    { id: 5, name: 'Analitycy Danych', parentId: 2, createdBy: 'seed' },
+    { id: 6, name: 'HR', parentId: 1, createdBy: 'seed' },
+    { id: 7, name: 'Rekruterzy', parentId: 6, createdBy: 'seed' },
+    { id: 8, name: 'Specjaliści ds. Szkoleń', parentId: 6, createdBy: 'seed' },
+    { id: 9, name: 'Dział Finansowy', parentId: 1, createdBy: 'seed' },
+    { id: 10, name: 'Księgowi', parentId: 9, createdBy: 'seed' },
+    { id: 11, name: 'Analitycy Finansowi', parentId: 9, createdBy: 'seed' },
+    { id: 12, name: 'Marketing', parentId: 1, createdBy: 'seed' },
+    { id: 13, name: 'Specjaliści ds. Marketingu', parentId: 12, createdBy: 'seed' },
+    { id: 14, name: 'Graficy', parentId: 12, createdBy: 'seed' }
 ]
 
 export const users = [
-    {
-        id: 1,
-        email: 'j.violin@test.com',
-        firstname: "John",
-        lastname: "Violin",
-        description: "programmer",
-        positionId: 1,
-        phone: "111 111 111",
-        createdBy: "seed",
-        unitId: 2
-    },
-    {
-        id: 2,
-        email: 'j.vengerberg@test.com',
-        firstname: "Jenna",
-        lastname: "Vengerberg",
-        description: "Data Analyst",
-        positionId: 2,
-        unitId: 3,
-        createdBy: "seed"
-    }
+    { id: 1, email: 'j.davis@test.com', firstname: 'John', lastname: 'Davis', description: 'Random user description', positionId: 5, unitId: 4, createdBy: 'seed' },
+    { id: 2, email: 's.williams@test.com', firstname: 'Sarah', lastname: 'Williams', description: 'Random user description', positionId: 4, unitId: 2, createdBy: 'seed', phone: '094393990' },
+    { id: 3, email: 'j.garcia@test.com', firstname: 'John', lastname: 'Garcia', description: 'Random user description', positionId: 1, unitId: 3, createdBy: 'seed' },
+    { id: 4, email: 'j.smith@test.com', firstname: 'James', lastname: 'Smith', description: 'Random user description', positionId: 2, unitId: 5, createdBy: 'seed' },
+    { id: 5, email: 'l.davis@test.com', firstname: 'Laura', lastname: 'Davis', description: 'Random user description', positionId: 4, unitId: 2, createdBy: 'seed', phone: '641082406' },
+    { id: 6, email: 'l.jones@test.com', firstname: 'Laura', lastname: 'Jones', description: 'Random user description', positionId: 5, unitId: 5, createdBy: 'seed', phone: '829315093' },
+    { id: 7, email: 's.davis@test.com', firstname: 'Sarah', lastname: 'Davis', description: 'Random user description', positionId: 4, unitId: 2, createdBy: 'seed', phone: '812544578' },
+    { id: 8, email: 'j.brown@test.com', firstname: 'James', lastname: 'Brown', description: 'Random user description', positionId: 3, unitId: 5, createdBy: 'seed', phone: '171717108' },
+    { id: 9, email: 'm.garcia@test.com', firstname: 'Michael', lastname: 'Garcia', description: 'Random user description', positionId: 2, unitId: 4, createdBy: 'seed', phone: '840017653' },
+    { id: 10, email: 'm.johnson@test.com', firstname: 'Michael', lastname: 'Johnson', description: 'Random user description', positionId: 3, unitId: 4, createdBy: 'seed', phone: '282861290' },
+    { id: 11, email: 'e.wilson@test.com', firstname: 'Emily', lastname: 'Wilson', description: 'Random user description', positionId: 2, unitId: 1, createdBy: 'seed', phone: '773472193' },
+    { id: 12, email: 'j.rodriguez@test.com', firstname: 'John', lastname: 'Rodriguez', description: 'Random user description', positionId: 5, unitId: 1, createdBy: 'seed' },
+    { id: 13, email: 'j.johnson@test.com', firstname: 'Jane', lastname: 'Johnson', description: 'Random user description', positionId: 2, unitId: 3, createdBy: 'seed', phone: '296175808' },
+    { id: 14, email: 'd.brown@test.com', firstname: 'David', lastname: 'Brown', description: 'Random user description', positionId: 2, unitId: 3, createdBy: 'seed', phone: '663528230' },
+    { id: 15, email: 'd.rodriguez@test.com', firstname: 'David', lastname: 'Rodriguez', description: 'Random user description', positionId: 5, unitId: 4, createdBy: 'seed', phone: '636417760' },
+    { id: 16, email: 'j.wilson@test.com', firstname: 'John', lastname: 'Wilson', description: 'Random user description', positionId: 1, unitId: 1, createdBy: 'seed' },
+    { id: 17, email: 'd.smith@test.com', firstname: 'David', lastname: 'Smith', description: 'Random user description', positionId: 4, unitId: 4, createdBy: 'seed' },
+    { id: 18, email: 'm.jones@test.com', firstname: 'Michael', lastname: 'Jones', description: 'Random user description', positionId: 1, unitId: 4, createdBy: 'seed' },
+    { id: 19, email: 'l.rodriguez@test.com', firstname: 'Laura', lastname: 'Rodriguez', description: 'Random user description', positionId: 1, unitId: 2, createdBy: 'seed' },
+    { id: 20, email: 'l.johnson@test.com', firstname: 'Laura', lastname: 'Johnson', description: 'Random user description', positionId: 3, unitId: 2, createdBy: 'seed' },
+    { id: 21, email: 'j.williams@test.com', firstname: 'Jane', lastname: 'Williams', description: 'Random user description', positionId: 1, unitId: 3, createdBy: 'seed' },
+    { id: 22, email: 'm.rodriguez@test.com', firstname: 'Michael', lastname: 'Rodriguez', description: 'Random user description', positionId: 4, unitId: 3, createdBy: 'seed', phone: '048076250' },
+    { id: 23, email: 'a.davis@test.com', firstname: 'Alex', lastname: 'Davis', description: 'Random user description', positionId: 3, unitId: 2, createdBy: 'seed', phone: '856295023' },
+    { id: 24, email: 'e.jones@test.com', firstname: 'Emily', lastname: 'Jones', description: 'Random user description', positionId: 1, unitId: 4, createdBy: 'seed', phone: '171890794' },
+    { id: 25, email: 'm.brown@test.com', firstname: 'Michael', lastname: 'Brown', description: 'Random user description', positionId: 4, unitId: 4, createdBy: 'seed', phone: '448104808' },
+    { id: 26, email: 'e.miller@test.com', firstname: 'Emily', lastname: 'Miller', description: 'Random user description', positionId: 1, unitId: 2, createdBy: 'seed' },
+    { id: 27, email: 'e.davis@test.com', firstname: 'Emily', lastname: 'Davis', description: 'Random user description', positionId: 4, unitId: 5, createdBy: 'seed' },
+    { id: 28, email: 'a.wilson@test.com', firstname: 'Alex', lastname: 'Wilson', description: 'Random user description', positionId: 5, unitId: 4, createdBy: 'seed', phone: '654204596' },
+    { id: 29, email: 'a.smith@test.com', firstname: 'Alex', lastname: 'Smith', description: 'Random user description', positionId: 3, unitId: 1, createdBy: 'seed' },
+    { id: 30, email: 'j.miller@test.com', firstname: 'Jane', lastname: 'Miller', description: 'Random user description', positionId: 5, unitId: 1, createdBy: 'seed', phone: '812337033' },
+    { id: 31, email: 'd.garcia@test.com', firstname: 'David', lastname: 'Garcia', description: 'Random user description', positionId: 4, unitId: 4, createdBy: 'seed' },
+    { id: 32, email: 'a.johnson@test.com', firstname: 'Alex', lastname: 'Johnson', description: 'Random user description', positionId: 5, unitId: 5, createdBy: 'seed', phone: '145219992' },
+    { id: 33, email: 'm.smith@test.com', firstname: 'Michael', lastname: 'Smith', description: 'Random user description', positionId: 3, unitId: 2, createdBy: 'seed', phone: '059729495' },
+    { id: 34, email: 'm.davis@test.com', firstname: 'Michael', lastname: 'Davis', description: 'Random user description', positionId: 4, unitId: 5, createdBy: 'seed' },
+    { id: 35, email: 'a.williams@test.com', firstname: 'Alex', lastname: 'Williams', description: 'Random user description', positionId: 5, unitId: 1, createdBy: 'seed' },
+    { id: 36, email: 'a.garcia@test.com', firstname: 'Anna', lastname: 'Garcia', description: 'Random user description', positionId: 1, unitId: 2, createdBy: 'seed', phone: '467732683' },
+    { id: 37, email: 'a.brown@test.com', firstname: 'Alex', lastname: 'Brown', description: 'Random user description', positionId: 2, unitId: 1, createdBy: 'seed' },
+    { id: 38, email: 'l.garcia@test.com', firstname: 'Laura', lastname: 'Garcia', description: 'Random user description', positionId: 2, unitId: 5, createdBy: 'seed', phone: '547388778' },
+    { id: 39, email: 'm.miller@test.com', firstname: 'Michael', lastname: 'Miller', description: 'Random user description', positionId: 1, unitId: 5, createdBy: 'seed', phone: '222677338' },
+    { id: 40, email: 'd.williams@test.com', firstname: 'David', lastname: 'Williams', description: 'Random user description', positionId: 4, unitId: 4, createdBy: 'seed', phone: '770787677' },
+    { id: 41, email: 'j.violin@test.com', firstname: "John", lastname: "Violin", description: "I secretly really wanna be a painter", positionId: 1, phone: "111 111 111", createdBy: "seed", unitId: 2 },
+    { id: 42, email: 'j.vengerberg@test.com', firstname: "Jenna", lastname: "Vengerberg", description: "Data Analyst", positionId: 2, unitId: 3, createdBy: "seed" }
 ]
 
 
 export const experiences = [
-    {
-        id: 1,
-        name: 'Software Developer at XYZ',
-        description: "Developing software using .NET and React",
-        startDate: moment().add(-3, "years").toDate(),
-        endDate: moment().add(-1, "years").toDate(),
-        isPrivate: false,
-        createdBy: "seed",
-        userId: 1
-    },
-    {
-        id: 2,
-        name: 'Python Developer at ABC',
-        description: "Developing software using Python",
-        startDate: moment().add(-6, "years").toDate(),
-        endDate: moment().add(-4, "years").toDate(),
-        isPrivate: false,
-        createdBy: "seed",
-        userId: 2
-    },
-    {
-        id: 3,
-        name: 'Data Analysts with R',
-        description: "Creating data statistics using R language",
-        startDate: moment().add(-4, "years").toDate(),
-        endDate: moment().add(-3, "years").toDate(),
-        isPrivate: false,
-        createdBy: "seed",
-        userId: 2
-    }
+    { id: 1, name: 'Software Developer at XYZ', description: 'Developing software using .NET and React', startDate: new Date('2021-01-11T13:50:02.339675'), endDate: new Date('2023-01-11T13:50:02.339690'), isPrivate: false, createdBy: 'seed', userId: 1 },
+    { id: 2, name: 'Python Developer at ABC', description: 'Developing software using Python', startDate: new Date('2018-01-11T13:50:02.339694'), endDate: new Date('2020-01-11T13:50:02.339697'), isPrivate: false, createdBy: 'seed', userId: 2 },
+    { id: 3, name: 'Data Analysts with R', description: 'Creating data statistics using R language', startDate: new Date('2020-01-11T13:50:02.339701'), endDate: new Date('2021-01-11T13:50:02.339704'), isPrivate: false, createdBy: 'seed', userId: 2 },
+    { id: 4, name: 'Frontend Developer at DEF', description: 'Worked as a Frontend Developer', startDate: new Date('2020-01-11T13:50:02.340121'), endDate: new Date('2021-01-11T13:50:02.340169'), isPrivate: true, createdBy: 'seed', userId: 36 },
+    { id: 5, name: 'Backend Developer at GHI', description: 'Worked as a Backend Developer', startDate: new Date('2023-01-11T13:50:02.340186'), endDate: new Date('2022-01-11T13:50:02.340191'), isPrivate: false, createdBy: 'seed', userId: 18 },
+    { id: 6, name: 'Full Stack Developer at JKL', description: 'Worked as a Full Stack Developer', startDate: new Date('2017-01-11T13:50:02.340201'), endDate: new Date('2020-01-11T13:50:02.340206'), isPrivate: true, createdBy: 'seed', userId: 34 },
+    { id: 7, name: 'DevOps Engineer at MNO', description: 'Worked as a DevOps Engineer', startDate: new Date('2022-01-11T13:50:02.340215'), endDate: new Date('2019-01-11T13:50:02.340219'), isPrivate: true, createdBy: 'seed', userId: 9 },
+    { id: 8, name: 'UI/UX Designer at PQR', description: 'Worked as a UI/UX Designer', startDate: new Date('2022-01-11T13:50:02.340228'), endDate: new Date('2023-01-11T13:50:02.340233'), isPrivate: false, createdBy: 'seed', userId: 24 },
+    { id: 9, name: 'Mobile Developer at STU', description: 'Worked as a Mobile Developer', startDate: new Date('2020-01-11T13:50:02.340243'), endDate: new Date('2020-01-11T13:50:02.340247'), isPrivate: false, createdBy: 'seed', userId: 25 },
+    { id: 10, name: 'Project Manager at VWX', description: 'Worked as a Project Manager', startDate: new Date('2020-01-11T13:50:02.340262'), endDate: new Date('2019-01-11T13:50:02.340266'), isPrivate: false, createdBy: 'seed', userId: 7 },
+    { id: 11, name: 'Product Owner at YZ', description: 'Worked as a Product Owner', startDate: new Date('2015-01-11T13:50:02.340274'), endDate: new Date('2024-01-11T13:50:02.340279'), isPrivate: false, createdBy: 'seed', userId: 11 },
+    { id: 12, name: 'QA Engineer at ALPHA', description: 'Worked as a QA Engineer', startDate: new Date('2022-01-11T13:50:02.340297'), endDate: new Date('2019-01-11T13:50:02.340302'), isPrivate: true, createdBy: 'seed', userId: 41 },
+    { id: 13, name: 'Business Analyst at BETA', description: 'Worked as a Business Analyst', startDate: new Date('2017-01-11T13:50:02.340312'), endDate: new Date('2022-01-11T13:50:02.340317'), isPrivate: true, createdBy: 'seed', userId: 16 },
+    { id: 14, name: 'Cloud Engineer at GAMMA', description: 'Worked as a Cloud Engineer', startDate: new Date('2018-01-11T13:50:02.340327'), endDate: new Date('2022-01-11T13:50:02.340331'), isPrivate: true, createdBy: 'seed', userId: 40 },
+    { id: 15, name: 'Data Scientist at DELTA', description: 'Worked as a Data Scientist', startDate: new Date('2021-01-11T13:50:02.340340'), endDate: new Date('2024-01-11T13:50:02.340344'), isPrivate: false, createdBy: 'seed', userId: 10 },
+    { id: 16, name: 'Cybersecurity Specialist at EPSILON', description: 'Worked as a Cybersecurity Specialist', startDate: new Date('2018-01-11T13:50:02.340354'), endDate: new Date('2021-01-11T13:50:02.340359'), isPrivate: true, createdBy: 'seed', userId: 20 },
+    { id: 17, name: 'Technical Writer at ZETA', description: 'Worked as a Technical Writer', startDate: new Date('2020-01-11T13:50:02.340393'), endDate: new Date('2023-01-11T13:50:02.340398'), isPrivate: true, createdBy: 'seed', userId: 12 },
+    { id: 18, name: 'HR Specialist at ETA', description: 'Worked as a HR Specialist', startDate: new Date('2015-01-11T13:50:02.340482'), endDate: new Date('2020-01-11T13:50:02.340489'), isPrivate: true, createdBy: 'seed', userId: 29 },
+    { id: 19, name: 'Marketing Manager at THETA', description: 'Worked as a Marketing Manager', startDate: new Date('2016-01-11T13:50:02.340497'), endDate: new Date('2020-01-11T13:50:02.340501'), isPrivate: true, createdBy: 'seed', userId: 42 },
+    { id: 20, name: 'Sales Lead at IOTA', description: 'Worked as a Sales Lead', startDate: new Date('2021-01-11T13:50:02.340508'), endDate: new Date('2023-01-11T13:50:02.340512'), isPrivate: false, createdBy: 'seed', userId: 42 },
+    { id: 21, name: 'Cybersecurity Specialist at EPSILON', description: 'Worked as a Product Owner', startDate: new Date('2018-01-11T13:52:26.241379'), endDate: new Date('2023-01-11T13:52:26.241411'), isPrivate: false, createdBy: 'seed', userId: 32 },
+    { id: 22, name: 'QA Engineer at ALPHA', description: 'Worked as a Data Scientist', startDate: new Date('2014-01-11T13:52:26.241425'), endDate: new Date('2022-01-11T13:52:26.241431'), isPrivate: true, createdBy: 'seed', userId: 10 },
+    { id: 23, name: 'Full Stack Developer at JKL', description: 'Worked as a Cybersecurity Specialist', startDate: new Date('2016-01-11T13:52:26.241444'), endDate: new Date('2024-01-11T13:52:26.241448'), isPrivate: false, createdBy: 'seed', userId: 22 },
+    { id: 24, name: 'Backend Developer at GHI', description: 'Worked as a Marketing Manager', startDate: new Date('2017-01-11T13:52:26.241460'), endDate: new Date('2020-01-11T13:52:26.241464'), isPrivate: false, createdBy: 'seed', userId: 8 },
+    { id: 25, name: 'Full Stack Developer at JKL', description: 'Worked as a Graphic Designer', startDate: new Date('2023-01-11T13:52:26.241475'), endDate: new Date('2022-01-11T13:52:26.241479'), isPrivate: true, createdBy: 'seed', userId: 10 },
+    { id: 26, name: 'Project Manager at VWX', description: 'Worked as a Network Administrator', startDate: new Date('2023-01-11T13:52:26.241491'), endDate: new Date('2023-01-11T13:52:26.241495'), isPrivate: false, createdBy: 'seed', userId: 18 },
+    { id: 27, name: 'Cloud Engineer at GAMMA', description: 'Worked as a Technical Writer', startDate: new Date('2019-01-11T13:52:26.241507'), endDate: new Date('2019-01-11T13:52:26.241512'), isPrivate: true, createdBy: 'seed', userId: 25 },
+    { id: 28, name: 'Database Architect at MU', description: 'Worked as a Frontend Developer', startDate: new Date('2021-01-11T13:52:26.241522'), endDate: new Date('2021-01-11T13:52:26.241526'), isPrivate: true, createdBy: 'seed', userId: 13 },
+    { id: 29, name: 'Data Scientist at DELTA', description: 'Worked as a Cybersecurity Specialist', startDate: new Date('2018-01-11T13:52:26.241537'), endDate: new Date('2019-01-11T13:52:26.241541'), isPrivate: true, createdBy: 'seed', userId: 5 },
+    { id: 30, name: 'Database Architect at MU', description: 'Worked as a QA Engineer', startDate: new Date('2017-01-11T13:52:26.241551'), endDate: new Date('2019-01-11T13:52:26.241556'), isPrivate: true, createdBy: 'seed', userId: 9 },
+    { id: 31, name: 'DevOps Engineer at MNO', description: 'Worked as a QA Engineer', startDate: new Date('2023-01-11T13:52:26.241569'), endDate: new Date('2022-01-11T13:52:26.241574'), isPrivate: false, createdBy: 'seed', userId: 30 },
+    { id: 32, name: 'Cybersecurity Specialist at EPSILON', description: 'Worked as a Business Analyst', startDate: new Date('2014-01-11T13:52:26.241585'), endDate: new Date('2019-01-11T13:52:26.241589'), isPrivate: false, createdBy: 'seed', userId: 6 },
+    { id: 33, name: 'Cloud Engineer at GAMMA', description: 'Worked as a Data Scientist', startDate: new Date('2023-01-11T13:52:26.241600'), endDate: new Date('2021-01-11T13:52:26.241606'), isPrivate: true, createdBy: 'seed', userId: 35 },
+    { id: 34, name: 'Marketing Manager at THETA', description: 'Worked as a Backend Developer', startDate: new Date('2018-01-11T13:52:26.241616'), endDate: new Date('2021-01-11T13:52:26.241620'), isPrivate: false, createdBy: 'seed', userId: 3 },
+    { id: 35, name: 'Technical Writer at ZETA', description: 'Worked as a DevOps Engineer', startDate: new Date('2020-01-11T13:52:26.241631'), endDate: new Date('2023-01-11T13:52:26.241636'), isPrivate: false, createdBy: 'seed', userId: 13 },
+    { id: 36, name: 'Network Administrator at LAMBDA', description: 'Worked as a HR Specialist', startDate: new Date('2022-01-11T13:52:26.241648'), endDate: new Date('2020-01-11T13:52:26.241652'), isPrivate: false, createdBy: 'seed', userId: 42 },
+    { id: 37, name: 'Project Manager at VWX', description: 'Worked as a Business Analyst', startDate: new Date('2014-01-11T13:52:26.241663'), endDate: new Date('2019-01-11T13:52:26.241668'), isPrivate: true, createdBy: 'seed', userId: 3 },
+    { id: 38, name: 'Full Stack Developer at JKL', description: 'Worked as a Database Architect', startDate: new Date('2022-01-11T13:52:26.241678'), endDate: new Date('2021-01-11T13:52:26.241682'), isPrivate: false, createdBy: 'seed', userId: 27 },
+    { id: 39, name: 'UI/UX Designer at PQR', description: 'Worked as a DevOps Engineer', startDate: new Date('2019-01-11T13:52:26.241692'), endDate: new Date('2024-01-11T13:52:26.241696'), isPrivate: true, createdBy: 'seed', userId: 20 },
+    { id: 40, name: 'UI/UX Designer at PQR', description: 'Worked as a Technical Writer', startDate: new Date('2015-01-11T13:52:26.241708'), endDate: new Date('2022-01-11T13:52:26.241712'), isPrivate: true, createdBy: 'seed', userId: 4 },
+    { id: 41, name: 'Technical Writer at ZETA', description: 'Worked as a Database Architect', startDate: new Date('2023-01-11T13:52:26.241722'), endDate: new Date('2021-01-11T13:52:26.241726'), isPrivate: false, createdBy: 'seed', userId: 31 },
+    { id: 42, name: 'Cybersecurity Specialist at EPSILON', description: 'Worked as a Data Scientist', startDate: new Date('2023-01-11T13:52:26.241736'), endDate: new Date('2019-01-11T13:52:26.241740'), isPrivate: true, createdBy: 'seed', userId: 38 },
+    { id: 43, name: 'Network Administrator at LAMBDA', description: 'Worked as a Full Stack Developer', startDate: new Date('2019-01-11T13:52:26.241751'), endDate: new Date('2023-01-11T13:52:26.241755'), isPrivate: false, createdBy: 'seed', userId: 6 },
+    { id: 44, name: 'Project Manager at VWX', description: 'Worked as a Backend Developer', startDate: new Date('2023-01-11T13:52:26.241769'), endDate: new Date('2019-01-11T13:52:26.241774'), isPrivate: false, createdBy: 'seed', userId: 3 },
+    { id: 45, name: 'Project Manager at VWX', description: 'Worked as a Data Scientist', startDate: new Date('2018-01-11T13:52:26.241784'), endDate: new Date('2024-01-11T13:52:26.241788'), isPrivate: false, createdBy: 'seed', userId: 27 },
+    { id: 46, name: 'UI/UX Designer at PQR', description: 'Worked as a Data Scientist', startDate: new Date('2020-01-11T13:52:26.241800'), endDate: new Date('2024-01-11T13:52:26.241804'), isPrivate: false, createdBy: 'seed', userId: 35 },
+    { id: 47, name: 'Backend Developer at GHI', description: 'Worked as a Mobile Developer', startDate: new Date('2017-01-11T13:52:26.242115'), endDate: new Date('2020-01-11T13:52:26.242129'), isPrivate: true, createdBy: 'seed', userId: 23 }
 ]
 
 export const skillsOnUsers = [
-    {
-        skillId: 1,
-        userId: 1,
-        createdBy: "seed"
-    },
-    {
-        skillId: 2,
-        userId: 1,
-        createdBy: "seed"
-    },
-    {
-        skillId: 3,
-        userId: 1,
-        createdBy: "seed"
-    },
-    {
-        skillId: 4,
-        userId: 2,
-        createdBy: "seed"
-    },
-    {
-        skillId: 5,
-        userId: 2,
-        createdBy: "seed"
-    },
-    {
-        skillId: 6,
-        userId: 2,
-        createdBy: "seed"
-    }
+    { skillId: 1, userId: 1, createdBy: "seed" },
+    { skillId: 2, userId: 1, createdBy: "seed" },
+    { skillId: 3, userId: 1, createdBy: "seed" },
+    { skillId: 4, userId: 2, createdBy: "seed" },
+    { skillId: 5, userId: 2, createdBy: "seed" },
+    { skillId: 6, userId: 2, createdBy: "seed" },
+    { skillId: 8, userId: 1, createdBy: 'seed' },
+    { skillId: 8, userId: 40, createdBy: 'seed' },
+    { skillId: 8, userId: 13, createdBy: 'seed' },
+    { skillId: 11, userId: 6, createdBy: 'seed' },
+    { skillId: 13, userId: 34, createdBy: 'seed' },
+    { skillId: 5, userId: 34, createdBy: 'seed' },
+    { skillId: 1, userId: 42, createdBy: 'seed' },
+    { skillId: 15, userId: 7, createdBy: 'seed' },
+    { skillId: 5, userId: 38, createdBy: 'seed' },
+    { skillId: 18, userId: 40, createdBy: 'seed' },
+    { skillId: 4, userId: 30, createdBy: 'seed' },
+    { skillId: 9, userId: 31, createdBy: 'seed' },
+    { skillId: 19, userId: 1, createdBy: 'seed' },
+    { skillId: 8, userId: 26, createdBy: 'seed' },
+    { skillId: 11, userId: 17, createdBy: 'seed' },
+    { skillId: 7, userId: 19, createdBy: 'seed' },
+    { skillId: 3, userId: 28, createdBy: 'seed' },
+    { skillId: 15, userId: 27, createdBy: 'seed' },
+    { skillId: 20, userId: 32, createdBy: 'seed' },
+    { skillId: 18, userId: 39, createdBy: 'seed' },
+    { skillId: 8, userId: 39, createdBy: 'seed' },
+    { skillId: 20, userId: 30, createdBy: 'seed' },
+    { skillId: 9, userId: 8, createdBy: 'seed' },
+    { skillId: 8, userId: 12, createdBy: 'seed' },
+    { skillId: 12, userId: 28, createdBy: 'seed' },
+    { skillId: 8, userId: 19, createdBy: 'seed' },
+    { skillId: 14, userId: 5, createdBy: 'seed' },
+    { skillId: 10, userId: 24, createdBy: 'seed' },
+    { skillId: 17, userId: 15, createdBy: 'seed' },
+    { skillId: 12, userId: 42, createdBy: 'seed' },
+    { skillId: 6, userId: 5, createdBy: 'seed' },
+    { skillId: 6, userId: 37, createdBy: 'seed' },
+    { skillId: 2, userId: 33, createdBy: 'seed' },
+    { skillId: 8, userId: 4, createdBy: 'seed' },
+    { skillId: 18, userId: 2, createdBy: 'seed' },
+    { skillId: 20, userId: 21, createdBy: 'seed' },
+    { skillId: 17, userId: 2, createdBy: 'seed' },
+    { skillId: 9, userId: 27, createdBy: 'seed' },
+    { skillId: 10, userId: 29, createdBy: 'seed' }
 ]

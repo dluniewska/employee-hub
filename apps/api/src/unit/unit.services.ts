@@ -3,6 +3,8 @@ import { Unit, Prisma } from '@prisma/client';
 import { PrismaService } from './../database/prisma.service';
 import { CreateUnitDto } from './dto/create-unit.dto';
 import { UpdateUnitDto } from './dto/update-unit.dto';
+import { allUnitsSelect } from './queries/all-units.select';
+import { baseUnitsSelect } from './queries/base-unit.select';
 
 
 @Injectable()
@@ -19,6 +21,7 @@ export class UnitsService {
     }): Promise<Partial<Unit>[]> {
         const { skip, take, cursor, where, orderBy } = params;
         let units = await this.prisma.unit.findMany({
+            select: allUnitsSelect,
             skip,
             take,
             cursor,
@@ -30,6 +33,7 @@ export class UnitsService {
 
     async getUnit(where: Prisma.UnitWhereUniqueInput): Promise<Partial<Unit>> {
         const unit = await this.prisma.unit.findUnique({
+            select: baseUnitsSelect,
             where: { ...where, deleted: false}
         });
 

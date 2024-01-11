@@ -8,7 +8,9 @@
     "api:start": "cd ./apps/api/ & nest start",
     "api:start:dev": "cd ./apps/api/ & nest start --watch",
     "api:start:debug": "cd ./apps/api/ & nest start --debug --watch",
-    "web:dev": "cd ./apps/web/ & vite"
+    "auth:start:dev": "cd ./apps/auth/ & nest start --watch",
+    "auth:start:debug": "cd ./apps/auth/ & nest start --debug --watch",
+    "web:start": "cd ./apps/web/ & vite"
   },
   "devDependencies": {
     "lerna": "^7.4.2",

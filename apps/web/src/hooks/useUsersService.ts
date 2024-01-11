@@ -1,25 +1,14 @@
 import { User } from "~types/types.user";
-import { axiosInstance } from "./axios-instance";
+import useAxios from "~hooks/useAxios";
 
 const URN = "/users";
 
-export const usersService = {
+const useUsersService = () => {
+    const axios = useAxios()
 
-    async getUsers(take: number, skip: number): Promise<User[]> {
+    async function getUsers(take: number, skip: number): Promise<User[]> {
 
-        return await axiosInstance.get(`${URN}?take=${take}&skip=${skip}`)
-            .then((res) => {
-                return res.data;
-            })
-            .catch((err) => {
-                console.log(err);
-                return err;
-            });
-    },
-
-    async getUser(id: number): Promise<User> {
-
-        return await axiosInstance.get(`${URN}/${id}`)
+        return await axios.get(`${URN}?take=${take}&skip=${skip}`)
             .then((res) => {
                 return res.data;
             })
@@ -28,4 +17,20 @@ export const usersService = {
                 return err;
             });
     }
+
+    async function getUser(id: number): Promise<User> {
+
+        return await axios.get(`${URN}/${id}`)
+            .then((res) => {
+                return res.data;
+            })
+            .catch((err) => {
+                console.log(err);
+                return err;
+            });
+    }
+
+    return { getUsers, getUser }
 }
+
+export default useUsersService;

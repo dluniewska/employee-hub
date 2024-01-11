@@ -1,23 +1,24 @@
 import { useLocation } from "react-router-dom"
 import { UserPageLocationProps } from "~types/props/types.userPageLocationProps"
 import React, { useEffect, useState } from "react"
-import { usersService } from "~services/usersService"
 import type { User } from "~types/types.user"
 import { Experience } from "~types/types.experience"
 import { getDuration } from "~helpers/DateTimeHelper"
 import { Skill } from "~types/types.skill"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "~ui/accordion"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "~ui/Accordion"
 import { Avatar } from "@radix-ui/react-avatar"
-import { AvatarFallback, AvatarImage } from "~ui/avatar"
+import { AvatarFallback, AvatarImage } from "~ui/Avatar"
+import useUsersService from "~hooks/useUsersService"
 
 const UserPage = () => {
 
   const location = useLocation().state as UserPageLocationProps
   const [user, setUser] = useState<User>();
   const path = location?.path ?? ''
+  const { getUser } = useUsersService();
 
   useEffect(() => {
-    usersService.getUser(location?.id).then((res) => {
+    getUser(location?.id).then((res) => {
       setUser(res)
     })
   }, [])

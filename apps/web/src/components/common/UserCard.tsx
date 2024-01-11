@@ -1,5 +1,5 @@
 import { UserCardProps } from '~types/props/types.userCardProps'
-import { Avatar, AvatarFallback, AvatarImage } from "~ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/Avatar"
 import ArrowForward from '~assets/arrow-forward.svg?react'
 import { GetRandomAvatarPath } from '~helpers/AvatarHelper';
 import { useNavigate } from 'react-router-dom';

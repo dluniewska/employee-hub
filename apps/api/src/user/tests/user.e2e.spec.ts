@@ -4,7 +4,7 @@ import { INestApplication, ValidationPipe } from "@nestjs/common";
 import * as request from "supertest";
 import { PrismaService } from "./../../database/prisma.service";
 import { useContainer } from "class-validator";
-import { UserEntity } from "../entities/user.entity";
+import { UserEntity } from "../types/entities/user.entity";
 
 //e2e tests
 

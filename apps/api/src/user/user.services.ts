@@ -30,6 +30,38 @@ export class UsersService {
         return users;
     }
 
+    async getUsersBySkill(params: {
+        skip?: number;
+        take?: number;
+        cursor?: Prisma.UserWhereUniqueInput;
+        where?: Prisma.UserWhereInput;
+        orderBy?: Prisma.UserOrderByWithRelationInput;
+        skills?: string[]; // Array of skill names to filter by
+    }): Promise<Partial<User>[]> {
+        const { skip, take, cursor, where, orderBy, skills } = params;
+        let users = await this.prisma.user.findMany({
+            select: allUserSelect,
+            skip,
+            take,
+            cursor,
+            where: {
+                ...where,
+                deleted: false,
+                skills: {
+                    some: {
+                        skill: {
+                            name: {
+                                in: skills,
+                            },
+                        },
+                    },
+                },
+            },
+            orderBy,
+        });
+        return users;
+    }
+
     async user(where: Prisma.UserWhereUniqueInput): Promise<Partial<User>> {
         const user = await this.prisma.user.findUnique({
             select: baseUserSelect,

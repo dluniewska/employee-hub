@@ -48,6 +48,7 @@ export class UnitsService {
         return await this.prisma.unit.create({
             data: {
                 name: unit.name,
+                parentId: unit.parentId,
                 createdBy: "test"
             }
         });
@@ -57,6 +58,7 @@ export class UnitsService {
         const unit = await this.prisma.unit.findUnique({
             where: { ...where, deleted: false}
         });
+        console.log("unit", unit)
 
         if (!unit) {
             throw new NotFoundException(`unit with id: ${where.id} was not found`);

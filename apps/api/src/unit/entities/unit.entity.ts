@@ -9,7 +9,7 @@ export class UnitEntity implements Unit {
     @ApiProperty({ type: String, required: true, nullable: false })
     name: string;
 
-    @ApiProperty({ type: Number, required: true })
+    @ApiProperty({ type: Number, required: false, nullable: true })
     parentId: number;
 
     @ApiProperty({ type: Date, readOnly: true })

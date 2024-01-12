@@ -8,8 +8,8 @@ export class CreateUnitDto {
     @IsNotEmpty()
     name: string;
 
-    @ApiProperty({ required: true, nullable: false })
+    @ApiProperty({ required: true, nullable: true })
     @IsInt()
-    @IsNotEmpty()
+    @IsOptional()
     parentId: number;
 }

@@ -48,9 +48,6 @@ export class UnitsService {
         return await this.prisma.unit.create({
             data: {
                 name: unit.name,
-                parent: {
-                    connect: { id: unit.parentId }
-                },
                 createdBy: "test"
             }
         });

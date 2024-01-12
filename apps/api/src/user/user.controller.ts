@@ -45,6 +45,6 @@ export class UsersController {
     @Delete(':id')
     @UseGuards(AuthGuard)
     async deleteUser(@Param('id', ParseIntPipe) id) {
-        return await this.usersService.deletePost({ id: id });
+        return await this.usersService.deleteUser({ id: id });
     }
 }  

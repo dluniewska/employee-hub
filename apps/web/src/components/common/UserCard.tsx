@@ -1,9 +1,11 @@
 import { UserCardProps } from '~types/props/types.userCardProps'
-import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/Avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "~ui/Avatar"
 import ArrowForward from '~assets/arrow-forward.svg?react'
 import { GetRandomAvatarPath } from '~helpers/AvatarHelper';
 import { useNavigate } from 'react-router-dom';
 import { UserPageLocationProps } from '~types/props/types.userPageLocationProps';
+import { NavigationProps } from '~types/props/types.navigationProps';
+import { Button } from '~ui/Button';
 
 const UserCard = ({ user }: UserCardProps) => {
 
@@ -12,6 +14,10 @@ const UserCard = ({ user }: UserCardProps) => {
 
     const handleArrowClick = (id: number) => {
         navigate(`/users/${id}`, { state: { id, path } as UserPageLocationProps });
+    }
+
+    const handleUnitClick = (id: number) => {
+        navigate(`/units/${id}`, { state: { id } as NavigationProps });
     }
 
     return (
@@ -25,7 +31,7 @@ const UserCard = ({ user }: UserCardProps) => {
             <div className='basis-2/3 text-pastel-dark-brown-color'>
                 <h3 className='text-lg font-bold'>{`${user.firstname} ${user.lastname}`}</h3>
                 <h2 className='text-sm mb-2 text-pastel-mud-color'>{user.position.name}</h2>
-                <h2 className='text-sm italic'>{user.unit.name}</h2>
+                <Button onClick={() => handleUnitClick(user.unit.id)} variant={"link"} className='text-sm pl-0'>{user.unit.name}</Button>
             </div>
             <div className='basis-1/6 m-auto flex justify-start text-pastel-dark-brown-color'>
                 <ArrowForward onClick={() => handleArrowClick(user.id)} className='h-6 w-6 hover:translate-x-2 hover:scale-110 duration-150 fill-current' />

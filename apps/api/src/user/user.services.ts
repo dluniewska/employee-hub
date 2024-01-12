@@ -77,7 +77,7 @@ export class UsersService {
 
     }
 
-    async deletePost(where: Prisma.UserWhereUniqueInput) {
+    async deleteUser(where: Prisma.UserWhereUniqueInput) {
         const user = await this.prisma.user.findUnique({
             where: { ...where, deleted: false}
         });

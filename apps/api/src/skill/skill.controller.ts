@@ -7,6 +7,7 @@ import { SkillsService } from "./skill.services";
 import { SkillEntity } from "./entities/skill.entity";
 import { Skill } from "@prisma/client";
 import { CreateSkillDto } from "./dto/create-skill.dto";
+import { UpdateSkillDto } from "./dto/update-skill.dto";
 
 @Controller("skills")
 @ApiTags("skills")
@@ -18,7 +19,7 @@ export class SkillsController {
     @UseGuards(AuthGuard)
     @ApiCreatedResponse({ type: SkillEntity, isArray: true })
     async getSkills(@Query('skip', ParseIntPipe) skip?: number, @Query('take', ParseIntPipe) take?: number): Promise<Partial<Skill>[]> {
-        return await this.skillsService.skills({ skip, take });
+        return bigintStringify(await this.skillsService.skills({ skip, take }));
     }
 
     @Get(':id')

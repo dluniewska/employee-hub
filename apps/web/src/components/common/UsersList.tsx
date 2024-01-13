@@ -3,9 +3,9 @@ import UserCard from "~common/UserCard"
 
 const UsersList = ({ users }: GridProps) => {
     return (
-        <div className="text-gray-900 overflow-y-auto bg-scroll h-full hide-scrollbar">
+        <div className="text-gray-900 overflow-y-auto bg-scroll h-full hide-scrollbar w-full">
             <div className="h-full flex flex-col p-5 items-center">
-                <div className="w-3/4 md:w-1/2 pb-20">
+                <div className="w-3/4 md:w-1/2 pb-20 min-w-max">
                     {
                         users && users.length > 0 ?
                         (

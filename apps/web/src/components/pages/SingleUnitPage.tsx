@@ -12,6 +12,7 @@ const SingleUnitPage = () => {
     const location = useLocation().state as NavigationProps
     const [unit, setUnit] = useState<Unit>();
     const { getUnit } = useUnitsService();
+    const navigate = useNavigate()
     
 
     useEffect(() => {
@@ -20,12 +21,23 @@ const SingleUnitPage = () => {
         })
     }, [location.id])
 
+
+    const handleUnitClick = () => {
+        navigate(`/units/${unit?.parent.id}`, { state: { id: unit?.parent.id } as NavigationProps, replace: true });
+      }
+
     return (
         <div className="flex flex-col overflow-y-auto bg-scroll h-screen p-8">
 
             <div className="border-b border-gray-300 my-4 p-2">
                 <div className="text-lg font-bold my-2">{unit?.name}</div>
-                {unit?.parent && <div><span className="text-sm font-bold">Jednostka nadrzędna:</span> {unit.parent.name}</div>}
+                {
+                    unit?.parent && 
+                    <div>
+                        <span className="text-sm font-bold">Jednostka nadrzędna:</span>
+                        <Button variant={"link"} onClick={() => handleUnitClick()}>{unit.parent.name}</Button>
+                    </div>
+                }
             </div>
 
             <div className="flex justify-evenly mt-10 w-11/12 max-h-max">

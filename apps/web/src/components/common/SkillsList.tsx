@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Skill } from '~types/types.skill'
 import { Button } from '~ui/Button';
 import ExpandIcon from '~assets/expand.svg?react'
+import React from 'react';
 
 const SkillsList = ({ skills, selectedSkills, setSelectedSkills }: { skills: Skill[], selectedSkills: Skill[], setSelectedSkills: React.Dispatch<React.SetStateAction<Skill[]>> }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -33,23 +34,25 @@ const SkillsList = ({ skills, selectedSkills, setSelectedSkills }: { skills: Ski
             {dropdownOpen && (
                 <div className="mt-2 rounded-md shadow-lg bg-white z-10 w-full overflow-y-auto bg-scroll h-96 hide-scrollbar">
                     {skills.map((skill) => (
-                        <div key={skill.id} className="flex items-center p-2 border-b border-gray-100">
-                            <input
-                                type="checkbox"
-                                id={`skill-${skill.id}`}
-                                className="mr-2 h-4 w-4"
-                                onChange={() => handleCheckboxChange(skill)}
-                                checked={selectedSkills.some(s => s.id === skill.id)}
-                            />
-                            <label htmlFor={`skill-${skill.id}`} className="text-md text-gray-700">
-                                {skill.name}
-                            </label>
-                        </div>
+                        <React.Fragment>
+                            <div key={skill.id} className="flex items-center p-2 border-b border-gray-100">
+                                <input
+                                    type="checkbox"
+                                    id={`skill-${skill.id}`}
+                                    className="mr-2 h-4 w-4"
+                                    onChange={() => handleCheckboxChange(skill)}
+                                    checked={selectedSkills.some(s => s.id === skill.id)}
+                                />
+                                <label htmlFor={`skill-${skill.id}`} className="text-md text-gray-700">
+                                    {skill.name}
+                                </label>
+                            </div>
+                        </React.Fragment>
                     ))}
                 </div>
             )}
 
-            { !dropdownOpen && <SelectedSkillsList selectedSkills={selectedSkills} /> }
+            {!dropdownOpen && <SelectedSkillsList selectedSkills={selectedSkills} />}
 
         </div>
     );
@@ -70,8 +73,8 @@ const SelectedSkillsList = ({ selectedSkills }: { selectedSkills: Skill[] }) => 
                     </div>
 
                 )
-                :
-                <p>Nie wybrano filtrów</p>
+                    :
+                    <p>Nie wybrano filtrów</p>
             }
         </div>
     )

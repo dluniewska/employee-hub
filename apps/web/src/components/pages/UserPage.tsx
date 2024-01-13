@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { UserPageLocationProps } from "~types/props/types.userPageLocationProps"
 import React, { useEffect, useState } from "react"
 import type { User } from "~types/types.user"
@@ -9,11 +9,16 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "~u
 import { Avatar } from "@radix-ui/react-avatar"
 import { AvatarFallback, AvatarImage } from "~ui/Avatar"
 import useUsersService from "~hooks/useUsersService"
+import { useAuth } from "~hooks/useAuth"
+import { Button } from "~ui/Button"
+import { NavigationProps } from "~/types/props/types.navigationProps"
 
 const UserPage = () => {
 
   const location = useLocation().state as UserPageLocationProps
   const [user, setUser] = useState<User>();
+  const { user: authUser } = useAuth();
+
   const path = location?.path ?? ''
   const { getUser } = useUsersService();
 
@@ -51,6 +56,12 @@ const UserPage = () => {
         {user && <UserBasicData user={user} />}
         {user && <UserDetails user={user} />}
 
+        {
+          authUser?.email == user?.email && (
+            <Button>edytuj dane</Button>
+          )
+        }
+
       </div>
 
     </div>
@@ -58,6 +69,12 @@ const UserPage = () => {
 }
 
 const UserBasicData = ({ user }: { user: User }) => {
+  const navigate = useNavigate();
+
+  const handleUnitClick = () => {
+    navigate(`/units/${user.unit.id}`, { state: { id: user.unit.id } as NavigationProps, replace: true });
+  }
+
   return (
     <div className="flex flex-col my-5">
       <div className="w-max mx-auto">
@@ -67,7 +84,7 @@ const UserBasicData = ({ user }: { user: User }) => {
         </div>
         <div className="flex flex-col mt-5 w-full" >
           <div className="text-sm text-center">{user?.position?.name}</div>
-          <div className="text-pastel-mud-color text-sm text-center">{user?.unit?.name}</div>
+          <Button className="text-pastel-mud-color text-sm text-center" variant={"link"} onClick={() => handleUnitClick()}>{user?.unit?.name}</Button>
         </div>
       </div>
     </div>
@@ -89,12 +106,13 @@ const UserDetails = ({ user }: { user: User }) => {
 }
 
 const SkillsList = ({ skills }: { skills: Skill[] }) => {
+  console.log(skills)
   return (
     <div className="mt-5">
       <div className="text-pastel-dark-brown-color mt-5">
         {
           skills.map(obj => (
-            <span className="pr-3 leading-3" key={`${obj.skill.id}`}>{obj.skill.name}</span>
+            <span className="pr-3 leading-3" key={`${obj.id}`}>{obj.name}</span>
           ))
         }
       </div>

@@ -103,8 +103,14 @@ export class UsersService {
         if (!user) {
             throw new NotFoundException(`User with id: ${where.id} was not found`);
         }
-
-        return user;
+        const formattedUser = {
+            ...user,
+            skills: user.skills.map(skill => ({
+                id: skill.skill.id,
+                name: skill.skill.name
+            }))
+        }
+        return formattedUser;
     }
 
     async createUser(user: CreateUserDto): Promise<Partial<User>> {

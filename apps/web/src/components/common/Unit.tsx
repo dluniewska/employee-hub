@@ -48,7 +48,7 @@ export const UnitComponent = ({ unit, childrenUnits, level, color }: { unit: Uni
     const rootChildren = childrenUnits.filter(u => u.parentId === unit.id);
     const filteredChildren = childrenUnits.filter((element) => !rootChildren.includes(element));
 
-    let opacity: number = level > 10 ? 10 : (level+3)*10;    
+    let opacity: number = level > 10 ? 10 : (level+4)*10;    
     let colorVariant = color ?? orangeColor(opacity);
 
     const handleArrowClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -57,7 +57,7 @@ export const UnitComponent = ({ unit, childrenUnits, level, color }: { unit: Uni
     }
 
     return (
-        <div className={`border rounded-md flex flex-col m-4 p-5 ${colorVariant} hover:bg-pastel-dark-brown-color/40 hover:text-white`} onClick={(e) => handleArrowClick(e)}>
+        <div className={`border shadow-inner rounded-md flex flex-col m-4 p-5 ${colorVariant} hover:bg-pastel-pink-color/30 border-pastel-pink-color`} onClick={(e) => handleArrowClick(e)}>
             <div className="flex flex-row pl-5" >
                 <div className="font-semibold w-1/2">{unit.name}</div>
             </div>

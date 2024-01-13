@@ -18,6 +18,19 @@ const useUsersService = () => {
             });
     }
 
+    async function getUsersBySkills(take: number, skip: number, skillNames: string[]): Promise<User[]> {
+        const params = new URLSearchParams({ strings: JSON.stringify(skillNames) });
+
+        return await axios.get(`${URN}/byskills?take=${take}&skip=${skip}&${params.toString()}`)
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => {
+            console.log(err);
+            return err;
+        });
+    }
+
     async function getUser(id: number): Promise<User> {
 
         return await axios.get(`${URN}/${id}`)
@@ -30,7 +43,7 @@ const useUsersService = () => {
             });
     }
 
-    return { getUsers, getUser }
+    return { getUsers, getUser, getUsersBySkills }
 }
 
 export default useUsersService;

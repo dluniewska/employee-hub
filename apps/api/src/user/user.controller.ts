@@ -1,6 +1,6 @@
 import { Controller, Get, Param, Post, Body, Put, Delete, Query,ParseIntPipe, UseFilters, UseGuards } from "@nestjs/common";
 import { UsersService } from "./user.services"
-import { User } from "@prisma/client";
+import { Skill, User } from "@prisma/client";
 import bigintStringify from "./../helpers/jsonHelper";
 import { ApiCreatedResponse, ApiTags } from "@nestjs/swagger";
 import { PrismaClientExceptionFilter } from "./../database/prisma-client-exception.filter";
@@ -19,7 +19,14 @@ export class UsersController {
     @UseGuards(AuthGuard)
     @ApiCreatedResponse({ type: UserEntity, isArray: true })
     async getUsers(@Query('skip', ParseIntPipe) skip?: number, @Query('take', ParseIntPipe) take?: number): Promise<Partial<User>[]> {
-        return await this.usersService.users({ skip, take });
+        return bigintStringify(await this.usersService.users({ skip, take }));
+    }
+
+    @Get('byskills')
+    @UseGuards(AuthGuard)
+    @ApiCreatedResponse({ type: UserEntity, isArray: true })
+    async getUsersBySkills(@Query('strings') skills: string[], @Query('skip', ParseIntPipe) skip?: number, @Query('take', ParseIntPipe) take?: number): Promise<Partial<User>[]> {
+        return bigintStringify(await this.usersService.getUsersBySkill({ skip, take, skills }));
     }
 
     @Get(':id')

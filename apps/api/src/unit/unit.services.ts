@@ -58,7 +58,6 @@ export class UnitsService {
         const unit = await this.prisma.unit.findUnique({
             where: { ...where, deleted: false}
         });
-        console.log("unit", unit)
 
         if (!unit) {
             throw new NotFoundException(`unit with id: ${where.id} was not found`);

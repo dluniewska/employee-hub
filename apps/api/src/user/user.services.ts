@@ -30,10 +30,74 @@ export class UsersService {
         return users;
     }
 
+    async getUsersBySkill(params: {
+        skip?: number;
+        take?: number;
+        cursor?: Prisma.UserWhereUniqueInput;
+        where?: Prisma.UserWhereInput;
+        orderBy?: Prisma.UserOrderByWithRelationInput;
+        skills?: string[]; // Array of skill names to filter by
+    }): Promise<Partial<User>[]> {
+        const { skip, take, cursor, where, orderBy, skills } = params;
+        let args = JSON.parse(skills.toString())
+        let users = await this.prisma.user.findMany({
+            include: {
+                skills: {
+                    select: {
+                        skill: {
+                            select: {
+                                id: true,
+                                name: true
+                            }
+                        }
+                    }
+                },
+                position: {
+                    select: {
+                        id: true,
+                        name: true
+                    }
+                },
+                unit: {
+                    select: {
+                        id: true,
+                        name: true,
+                        parentId: true
+                    }
+                }
+            },
+            skip,
+            take,
+            cursor,
+            where: {
+                ...where,
+                deleted: false,
+                skills: {
+                    some: {
+                        skill: {
+                            name: {
+                                in: args,
+                            },
+                        },
+                    },
+                }
+            },
+            orderBy,
+        });
+        const formattedUsers = users.map(user => ({
+            ...user,
+            skills: user.skills.map(skill => ({
+              id: skill.skill.id,
+              name: skill.skill.name
+            }))
+          }));
+        return formattedUsers;
+    }
+
     async user(where: Prisma.UserWhereUniqueInput): Promise<Partial<User>> {
         const user = await this.prisma.user.findUnique({
             select: baseUserSelect,
-            where: { ...where, deleted: false}
+            where: { ...where, deleted: false }
         });
 
         if (!user) {
@@ -61,15 +125,15 @@ export class UsersService {
         });
     }
 
-    async updateUser(where: Prisma.UserWhereUniqueInput, updateUserDto: UpdateUserDto) {  
+    async updateUser(where: Prisma.UserWhereUniqueInput, updateUserDto: UpdateUserDto) {
         const user = await this.prisma.user.findUnique({
-            where: { ...where, deleted: false}
+            where: { ...where, deleted: false }
         });
 
         if (!user) {
             throw new NotFoundException(`User with id: ${where.id} was not found`);
         }
-        
+
         await this.prisma.user.update({
             data: updateUserDto,
             where
@@ -79,7 +143,7 @@ export class UsersService {
 
     async deleteUser(where: Prisma.UserWhereUniqueInput) {
         const user = await this.prisma.user.findUnique({
-            where: { ...where, deleted: false}
+            where: { ...where, deleted: false }
         });
 
         if (!user) {
@@ -94,5 +158,5 @@ export class UsersService {
             },
             where
         });
-      }
+    }
 }

@@ -32,7 +32,7 @@ One-time license purchase, software to be installed on company's server.
 | Identyfikator | F4 |
 |---------------|----|
 | Nazwa         | Option for units' heads to create and edit work schedules |
-| Priorytet     | 2  |
+| Priorytet     | 3  |
 
 | Identyfikator | F5 |
 |---------------|----|

@@ -2,20 +2,21 @@ import { useContext, useEffect, useState } from "react";
 import { EmployeeHubContext } from "~providers/ContextProvider";
 import UsersList from "~components/common/UsersList";
 import { filterBySkillNames, filterUsersByName } from "~helpers/UsersHelper";
-import { useSearch } from "~hooks/useSearch";
 import useUsersService from "~hooks/useUsersService";
 import SkillsList from "~common/SkillsList";
 import useSkillsService from "~hooks/useSkillsService";
 import { Skill } from "~types/types.skill";
+import SearchBar from "~common/SearchBar";
 
 const HomePage = () => {
 
   const { users, setUsers } = useContext(EmployeeHubContext);
   const [skills, setSkills] = useState<Skill[]>([]);
+  const [searchString, setSearchString] = useState<string>("");
+
   const [selectedSkills, setSelectedSkills] = useState<Skill[]>([]);
   const { getUsers, getUsersBySkills } = useUsersService();
   const { getSkills } = useSkillsService();
-  const { searchString } = useSearch()
 
   useEffect(() => {
     if (selectedSkills.length > 0) {
@@ -50,6 +51,7 @@ const HomePage = () => {
     <div className="h-full w-screen">
       <div className="flex flex-row h-screen">
         <div className="basis-3/4 overflow-visible">
+          <SearchBar setSearchString={setSearchString} />
           <UsersList users={users} />
         </div>
         <div className="basis-1/4 bg-pastel-brown-color/25 shadow-md overflow-visible">

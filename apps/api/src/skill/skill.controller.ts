@@ -30,7 +30,6 @@ export class SkillsController {
     }
 
     @Post()
-    @Roles('ADMIN')
     @ApiCreatedResponse({ type: SkillEntity })
     async createSkill(@Body() createSkillDto: CreateSkillDto): Promise<Partial<Skill>> {
         return bigintStringify(await this.skillsService.createSkill(createSkillDto));

@@ -3,23 +3,38 @@
 > Application for company-wide employee management. Easily store and access information on schedules, experience, skills, and more. User-friendly login with customized permissions for different roles.
 
 ## Target customers
+
 - Small and medium size companies in a need of a tool 
 
 ## Software requirements specification
-Functional:
+
+#### Functional:
+
 F1 - Creation organizational structures
+
 F2 - Listing of employees in each organizzational unit
+
 F3 - Editing one's skills, experience and description
+
 F4 - Option for units' heads to create and edit work schedules
+
 F5 - Filtering employees by their names and surnames, position, business unit and skills
 
-Non-functional:
+
+#### Non-functional:
+
 N1 - User-friendly, easy-to-read browser to look up people within organisation
+
 N2 - Enabling users' to:
+
 	N2.1. - look up for people with specific background
+ 
  	N2.2. - create and maintain their profiles
+  
   	N2.3. - contact easily, enhancing a collaborative culture environment
+   
 N3 - Ability to open and run application on widely-used browsers i.e. Google Chrome, Mozilla Firefox, Brave, Edge etc.
+
 
 ## Technology stack
 

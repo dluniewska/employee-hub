@@ -14,30 +14,60 @@ One-time license purchase, software to be installed on company's server.
 
 #### Functional:
 
-F1 - Creation organizational structures
+| Identyfikator | F1 |
+|---------------|----|
+| Nazwa         | Creation of organizational structures |
+| Priorytet     | 1  |
 
-F2 - Listing of employees in each organizzational unit
+| Identyfikator | F2 |
+|---------------|----|
+| Nazwa         | Listing of employees in each organizational unit |
+| Priorytet     | 1  |
 
-F3 - Editing one's skills, experience and description
+| Identyfikator | F3 |
+|---------------|----|
+| Nazwa         | Editing one's skills, experience, and description |
+| Priorytet     | 2  |
 
-F4 - Option for units' heads to create and edit work schedules
+| Identyfikator | F4 |
+|---------------|----|
+| Nazwa         | Option for units' heads to create and edit work schedules |
+| Priorytet     | 2  |
 
-F5 - Filtering employees by their names and surnames, position, business unit and skills
+| Identyfikator | F5 |
+|---------------|----|
+| Nazwa         | Filtering employees by their names, surnames, position, business unit, and skills |
+| Priorytet     | 1  |
 
 
 #### Non-functional:
 
-N1 - User-friendly, easy-to-read browser to look up people within organisation
+| Identyfikator | N1 |
+|---------------|----|
+| Nazwa         | User-friendly, easy-to-read browser to look up people within organisation |
+| Priorytet     | 1 |
 
-N2 - Enabling users' to:
 
-	N2.1. - look up for people with specific background
- 
- 	N2.2. - create and maintain their profiles
-  
-  	N2.3. - contact easily, enhancing a collaborative culture environment
-   
-N3 - Ability to open and run application on widely-used browsers i.e. Google Chrome, Mozilla Firefox, Brave, Edge etc.
+| Identyfikator | N2.1 |
+|---------------|------|
+| Nazwa         | Look up for people with specific background |
+| Priorytet     | 1    |
+
+| Identyfikator | N2.2 |
+|---------------|------|
+| Nazwa         | Maintain their profiles |
+| Priorytet     | 1    |
+
+| Identyfikator | N2.3 |
+|---------------|------|
+| Nazwa         | Contact easily, enhancing a collaborative culture environment |
+| Priorytet     | 1    |
+
+| Identyfikator | N3 |
+|---------------|----|
+| Nazwa         | Ability to open and run application on widely-used browsers i.e. Google Chrome, Mozilla Firefox, Brave, Edge etc. |
+| Priorytet     | 1  |
+
 
 
 ## Technology stack

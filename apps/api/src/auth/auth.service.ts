@@ -3,6 +3,7 @@ import { Injectable, Inject, ExecutionContext } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { Observable, firstValueFrom, timeout } from 'rxjs';
 import { LoginCredentialsDto, TokenResponseDto } from 'shared-types';
+import { ValidateUserResponseDto } from './dto/validate-user-response.dto';
 
 @Injectable()
 export class AuthService {
@@ -16,10 +17,9 @@ export class AuthService {
     return this.client.send<boolean, string>({ cmd: 'authme' }, token);
   }
 
-  validateUser(context: ExecutionContext) {
+  validateUser(context: ExecutionContext): Promise<ValidateUserResponseDto> {
     const req = context.switchToHttp().getRequest();
-    const res = firstValueFrom(
-      this.client.send({ role: 'auth', cmd: 'check' }, { jwt: req.headers['authorization']?.split(' ')[1] }).pipe(timeout(5000)));
+    const res = firstValueFrom(this.client.send({ role: 'auth', cmd: 'check' }, { jwt: req.headers['authorization']?.split(' ')[1] }).pipe(timeout(5000)));
     return res;
   }
 }

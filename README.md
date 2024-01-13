@@ -4,7 +4,11 @@
 
 ## Target customers
 
-- Small and medium size companies in a need of a tool 
+- Small and medium size companies in a need of a centralized database with employees' data
+
+## License
+
+One-time license purchase, software to be installed on company's server.
 
 ## Software requirements specification
 

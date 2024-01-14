@@ -1,12 +1,14 @@
 {
-  "include": ["src", "../auth/src/types/token-response.dto.ts"],            // Specify files to be included in compilation
-  "exclude": ["node_modules"],    // Exclude node_modules from compilation
+  "include": ["src"],
+  "exclude": ["node_modules"], 
   "compilerOptions": {
-    "target": "es6",             // Set ECMAScript target version
-    "module": "commonjs",        // Set module code generation
-    "declaration": true,         // Generates corresponding '.d.ts' file
-    "outDir": "./dist",          // Redirect output structure to the directory
-    "strict": true,              // Enable all strict type-checking options
-    "esModuleInterop": true,     // Enables emit interoperability between CommonJS and ES Modules
-  }
+    "declaration": true, 
+    "outDir": "./dist",  
+    "strict": true,
+    "moduleResolution": "Node",
+    "module": "ES6", //Vite treat all modules as ES6 modules. shared-types dist used a commonjs export, so only nestjs apps could use shared imports
+    "target": "ES6"
+  },
+  "esModuleInterop": true,
+  "baseUrl": "."
 }

@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom"
-import { UserPageLocationProps } from "~types/props/types.userPageLocationProps"
+import { UserPageLocationProps } from "~/types/props/types.userPageLocationProps"
 import React, { useEffect, useState } from "react"
 import type { User } from "~types/types.user"
 import { Experience } from "~types/types.experience"
@@ -11,7 +11,6 @@ import { AvatarFallback, AvatarImage } from "~ui/Avatar"
 import useUsersService from "~hooks/useUsersService"
 import { useAuth } from "~hooks/useAuth"
 import { Button } from "~ui/Button"
-import { NavigationProps } from "~/types/props/types.navigationProps"
 
 const UserPage = () => {
 
@@ -47,7 +46,7 @@ const UserPage = () => {
         </Accordion>
       </div>
 
-      <div className="flex flex-col px-8 h-screen basis-full md:basis-1/4 bg-pastel-pink-color/60 overflow-y-auto bg-scroll">
+      <div className="flex flex-col px-8 h-screen basis-full md:basis-1/4 bg-pastel-beige-color/50 overflow-y-auto bg-scroll">
         <Avatar className="flex justify-center mt-10">
           <AvatarImage className='p-5 bg-white rounded-full w-24 h-24 shadow-md overflow-visible' src={path} />
           <AvatarFallback className="w-24 h-24">{user ? `${Array.from(user?.firstname ?? "0")[0]}${Array.from(user?.lastname ?? "0")[0]}` : "noname"}</AvatarFallback>
@@ -72,7 +71,7 @@ const UserBasicData = ({ user }: { user: User }) => {
   const navigate = useNavigate();
 
   const handleUnitClick = () => {
-    navigate(`/units/${user.unit.id}`, { state: { id: user.unit.id } as NavigationProps, replace: true });
+    navigate(`/units/${user.unit.id}`, { state: { id: user.unit.id } as { id: number }, replace: true });
   }
 
   return (

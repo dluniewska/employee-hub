@@ -3,13 +3,12 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { GetRandomAvatarPath } from "~/helpers/AvatarHelper";
 import { UserPageLocationProps } from "~/types/props/types.userPageLocationProps";
 import useUnitsService from "~hooks/useUnitsService";
-import { NavigationProps } from "~types/props/types.navigationProps";
 import { Unit } from "~types/types.unit";
 import { User } from "~types/types.user";
 import { Button } from "~ui/Button";
 
 const SingleUnitPage = () => {
-    const location = useLocation().state as NavigationProps
+    const location = useLocation().state as { id: number }
     const [unit, setUnit] = useState<Unit>();
     const { getUnit } = useUnitsService();
     const navigate = useNavigate()
@@ -23,7 +22,7 @@ const SingleUnitPage = () => {
 
 
     const handleUnitClick = () => {
-        navigate(`/units/${unit?.parent.id}`, { state: { id: unit?.parent.id } as NavigationProps, replace: true });
+        navigate(`/units/${unit?.parent.id}`, { state: { id: unit?.parent.id } as { id: number }, replace: true });
       }
 
     return (
@@ -56,8 +55,7 @@ const InnerUnitsList = ({ units }: { units: Unit[] }) => {
     const navigate = useNavigate();
 
     function handleUnitClick(id: number) {
-        console.log("handle unit", id)
-        navigate(`/units/${id}`, { state: { id } as NavigationProps, replace: true });
+        navigate(`/units/${id}`, { state: { id } as { id: number }, replace: true });
     }
 
     return (

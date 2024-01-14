@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { NavigationProps } from "~/types/props/types.navigationProps";
 import { Unit } from "~types/types.unit";
 
 function orangeColor(opacity: number): string {
@@ -52,14 +51,14 @@ export const UnitComponent = ({ unit, childrenUnits, level, color }: { unit: Uni
     let colorVariant = color ?? orangeColor(opacity);
 
     const handleArrowClick = (e: React.MouseEvent<HTMLDivElement>) => {
-        navigate(`/units/${unit.id}`, { state: { id: unit.id } as NavigationProps });
+        navigate(`/units/${unit.id}`, { state: { id: unit.id } as { id: number} });
         e.stopPropagation();
     }
 
     return (
         <div className={`border shadow-inner rounded-md flex flex-col m-4 p-5 ${colorVariant} hover:bg-pastel-pink-color/30 border-pastel-pink-color`} onClick={(e) => handleArrowClick(e)}>
             <div className="flex flex-row pl-5" >
-                <div className="font-semibold w-1/2">{unit.name}</div>
+                <div className="font-semibold w-1/2 tracking-widest">{unit.name}</div>
             </div>
             {
                 rootChildren && rootChildren.length > 0 &&

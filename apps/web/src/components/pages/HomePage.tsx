@@ -3,7 +3,7 @@ import { EmployeeHubContext } from "~providers/ContextProvider";
 import UsersList from "~components/common/UsersList";
 import { filterBySkillNames, filterUsersByName } from "~helpers/UsersHelper";
 import useUsersService from "~hooks/useUsersService";
-import SkillsList from "~common/SkillsList";
+import SkillsSearch from "~/components/common/SkillsSearch";
 import useSkillsService from "~hooks/useSkillsService";
 import { Skill } from "~types/types.skill";
 import SearchBar from "~common/SearchBar";
@@ -24,10 +24,7 @@ const HomePage = () => {
 
       getUsersBySkills(100, 0, skillNames)
       .then((sel_res) => {
-        console.log(sel_res);
         let filteredBySkill = filterBySkillNames(sel_res, skillNames);
-        console.log(filteredBySkill);
-
         let filteredUsers = filterUsersByName(filteredBySkill, searchString);
         setUsers(filteredUsers);
       })    }
@@ -54,8 +51,8 @@ const HomePage = () => {
           <SearchBar setSearchString={setSearchString} />
           <UsersList users={users} />
         </div>
-        <div className="basis-1/4 bg-pastel-brown-color/25 shadow-md overflow-visible">
-          <SkillsList skills={skills} selectedSkills={selectedSkills} setSelectedSkills={setSelectedSkills} />
+        <div className="basis-1/4 bg-pastel-beige-color/50 overflow-visible">
+          <SkillsSearch skills={skills} selectedSkills={selectedSkills} setSelectedSkills={setSelectedSkills} />
         </div>
       </div>
     </div>

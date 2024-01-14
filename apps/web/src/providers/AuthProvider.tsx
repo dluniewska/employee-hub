@@ -50,8 +50,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode | React.R
       message = res.statusText;
       data = res.data;
 
-      console.log("login", user, token)
-
       setUser(user);
       setToken(token);
 

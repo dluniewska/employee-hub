@@ -3,7 +3,7 @@ import SearchIcon from '~assets/search-icon.svg?react'
 
 const SearchBar = ({ setSearchString }: { setSearchString: React.Dispatch<React.SetStateAction<string>> }) => {
     return (
-        <div className='p-3 relative w-full flex justify-center'>
+        <div className='p-3 relative w-full flex justify-center bg-pastel-beige-color/50'>
                 <div className="relative flex w-11/12 items-stretch m-0">
                     <input
                         type="search"

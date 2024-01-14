@@ -4,7 +4,7 @@ import { Button } from '~ui/Button';
 import ExpandIcon from '~assets/expand.svg?react'
 import React from 'react';
 
-const SkillsList = ({ skills, selectedSkills, setSelectedSkills }: { skills: Skill[], selectedSkills: Skill[], setSelectedSkills: React.Dispatch<React.SetStateAction<Skill[]>> }) => {
+const SkillsSearch = ({ skills, selectedSkills, setSelectedSkills }: { skills: Skill[], selectedSkills: Skill[], setSelectedSkills: React.Dispatch<React.SetStateAction<Skill[]>> }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const toggleDropdown = () => {
@@ -80,4 +80,4 @@ const SelectedSkillsList = ({ selectedSkills }: { selectedSkills: Skill[] }) => 
     )
 }
 
-export default SkillsList
+export default SkillsSearch

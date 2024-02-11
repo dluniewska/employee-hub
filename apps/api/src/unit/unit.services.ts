@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Unit, Prisma } from '@prisma/client';
-import { PrismaService } from './../database/prisma.service';
+import { PrismaService } from './../database/prisma/prisma.service';
 import { CreateUnitDto } from './dto/create-unit.dto';
 import { UpdateUnitDto } from './dto/update-unit.dto';
 import { allUnitsSelect } from './queries/all-units.select';

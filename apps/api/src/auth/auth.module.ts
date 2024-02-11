@@ -15,8 +15,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         useFactory: async (configService: ConfigService) => ({
           transport: Transport.RMQ,
           options: {
-            urls: [ configService.get<string>('rabbit.rabbitUrl') ],
-            queue: configService.get<string>('rabbit.rabbitAuthQueue'),
+            urls: [ configService.getOrThrow<string>('rabbit.rabbitUrl') ],
+            queue: configService.getOrThrow<string>('rabbit.rabbitAuthQueue'),
             queueOptions: {
               durable: false,
             }

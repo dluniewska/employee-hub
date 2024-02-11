@@ -1,4 +1,5 @@
 export default () => ({
     nodeEnv: process.env.NODE_ENV,
-    port: process.env.PORT
+    synchronize: process.env.SYNCHRONIZE, 
+    port: parseInt(process.env.PORT) || 3000
 });

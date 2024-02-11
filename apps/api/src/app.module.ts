@@ -7,6 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import databaseConfig from './config/database.config';
 import authConfig from './config/auth.config';
 import appConfig from './config/app.config';
+import { TypeORMModule } from './database/typeorm/typeorm.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import appConfig from './config/app.config';
       isGlobal: true,
       load: [databaseConfig, authConfig, appConfig]
     }),
+    TypeORMModule,
     UserModule, 
     UnitModule, 
     SkillModule

@@ -1,7 +1,7 @@
 import { Controller, Get, Param, Post, Body, Put, Delete, Query,ParseIntPipe, UseFilters, UseGuards } from "@nestjs/common";
 import bigintStringify from "./../helpers/jsonHelper";
 import { ApiCreatedResponse, ApiTags } from "@nestjs/swagger";
-import { PrismaClientExceptionFilter } from "./../database/prisma-client-exception.filter";
+import { PrismaClientExceptionFilter } from "./../database/prisma/prisma-client-exception.filter";
 import { AuthGuard } from "../auth/guards/auth.guard";
 import { SkillsService } from "./skill.services";
 import { SkillEntity } from "./entities/skill.entity";

@@ -2,9 +2,9 @@
 import { Controller, UnauthorizedException, UseGuards } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { AuthService } from './auth.services';
-import { LoginCredentialsDto } from 'shared-types';
-import { TokenResponseDto } from 'shared-types';
-import { Token } from 'shared-types';
+import { LoginCredentialsDto } from 'src/types/login-credentials.type';
+import { TokenResponseDto } from 'src/types/token-response.type';
+import { Token } from 'src/types/token.type';
 
 @Controller()
 export class AuthController {

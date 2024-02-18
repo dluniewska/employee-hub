@@ -31,7 +31,6 @@
     "moment": "^2.29.4",
     "reflect-metadata": "^0.1.14",
     "rxjs": "^7.8.1",
-    "shared-types": "file:../shared-types",
     "typeorm": "^0.3.20"
   },
   "devDependencies": {

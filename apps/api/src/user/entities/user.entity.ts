@@ -1,53 +1,76 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { User } from "@prisma/client";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Position } from '../../database/typeorm/entities/position.entity'
+import { Unit } from '../../database/typeorm/entities/unit.entity';
+import { Experience } from '../../database/typeorm/entities/experience.entity';
+import { Schedule } from '../../database/typeorm/entities/schedule.entity';
+import { SkillsOnUsers } from '../../database/typeorm/entities/skills-on-users.entity';
 
-export class UserEntity implements User {
+@Entity('Users')
+export class User {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @ApiProperty({ type: Number })
-    id: number;
+  @Column({ unique: true, length: 75 })
+  email: string;
 
-    @ApiProperty({ type: String, required: true, nullable: false })
-    email: string;
+  @Column({ length: 75 })
+  firstname: string;
 
-    @ApiProperty({ type: String, required: true, nullable: false, minimum: 3 })
-    firstname: string;
+  @Column({ length: 75 })
+  lastname: string;
 
-    @ApiProperty({ type: String, required: true, nullable: false, minimum: 3 })
-    lastname: string;
+  @Column({ length: 20, nullable: true })
+  phone: string;
 
-    @ApiProperty({ type: String, required: false, nullable: true })
-    phone: string;
+  @Column({ length: 15, nullable: true })
+  room: string;
 
-    @ApiProperty({ type: String, required: false, nullable: true })
-    room: string;
+  @ManyToOne(() => Position, position => position.users)
+  position: Position;
 
-    @ApiProperty({ type: Number, required: true })
-    positionId: number;
+  @Column()
+  positionId: number;
 
-    @ApiProperty({ type: Number, required: true })
-    unitId: number;
+  @ManyToOne(() => Unit, unit => unit.users)
+  unit: Unit;
 
-    @ApiProperty({ type: String, required: false, nullable: true })
-    description: string;
+  @Column()
+  unitId: number;
 
-    @ApiProperty({ type: Date, readOnly: true })
-    createdAt: Date;
+  @Column({ length: 250, nullable: true })
+  description: string;
 
-    @ApiProperty({ type: String, readOnly: true })
-    createdBy: string;
+  @OneToMany(() => Experience, experience => experience.user)
+  experiences: Experience[];
 
-    @ApiProperty({ type: Date, readOnly: true })
-    updatedAt: Date;
+  @OneToMany(() => Schedule, schedule => schedule.user)
+  schedules: Schedule[];
 
-    @ApiProperty({ type: String, readOnly: true })
-    updatedBy: string;
+  @OneToMany(() => SkillsOnUsers, skillsOnUsers => skillsOnUsers.user)
+  skills: SkillsOnUsers[];
 
-    @ApiProperty({ type: Date, readOnly: true })
-    deletedAt: Date;
+  @CreateDateColumn()
+  createdAt: Date;
 
-    @ApiProperty({ type: String, readOnly: true })
-    deletedBy: string;
+  @Column()
+  createdBy: string;
 
-    @ApiProperty({ type: Boolean, readOnly: true })
-    deleted: boolean;
+  @UpdateDateColumn()
+  updatedAt: Date;
+
+  @Column({ nullable: true })
+  updatedBy: string;
+
+  @Column({ type: 'timestamp', nullable: true })
+  deletedAt: Date;
+
+  @Column({ nullable: true })
+  deletedBy: string;
+
+  @Column({ default: false })
+  deleted: boolean;
+
+  constructor(user: Partial<User>) {
+    Object.assign(this, user);
+  }
 }

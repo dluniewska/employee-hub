@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-import { User } from './user.entity';
+import { User } from '../../../user/entities/user.entity';
 
 export enum Status {
   ONSITE = 'ONSITE',

@@ -2,8 +2,9 @@
 import { Injectable, Inject, ExecutionContext } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { Observable, firstValueFrom, timeout } from 'rxjs';
-import { LoginCredentialsDto, TokenResponseDto } from 'shared-types';
 import { ValidateUserResponseDto } from './dto/validate-user-response.dto';
+import { LoginCredentialsDto } from './dto/login-credentials.dto';
+import { TokenResponseDto } from './dto/token-response.dto';
 
 @Injectable()
 export class AuthService {

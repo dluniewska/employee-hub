@@ -1,22 +1,22 @@
 import { Test } from "@nestjs/testing";
-import { UsersController } from "../user.controller";
-import { UsersService } from "../user.services";
-import { PrismaService } from "./../../database/prisma.service";
+import { PrismaUsersController } from "../user.prisma.controller";
+import { PrismaUsersService } from "../user.prisma.services";
+import { PrismaService } from "./../../database/prisma/prisma.service";
 
 //unit tests
 
 describe('UsersController', () => {
-    let usersController: UsersController;
-    let usersService: UsersService;
+    let usersController: PrismaUsersController;
+    let usersService: PrismaUsersService;
 
     beforeEach(async () => {
         const moduleRef = await Test.createTestingModule({
-            controllers: [UsersController],
-            providers: [UsersService, PrismaService],
+            controllers: [PrismaUsersController],
+            providers: [PrismaUsersService, PrismaService],
         }).compile();
 
-        usersService = moduleRef.get<UsersService>(UsersService);
-        usersController = moduleRef.get<UsersController>(UsersController);
+        usersService = moduleRef.get<PrismaUsersService>(PrismaUsersService);
+        usersController = moduleRef.get<PrismaUsersController>(PrismaUsersController);
     });
 
     //todo: reads empty array

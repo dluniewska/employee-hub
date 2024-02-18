@@ -1,9 +1,10 @@
 import React, { createContext, useState, useEffect, useCallback } from "react";
 import { IAuthContext } from "~/types/providers/types.authContext";
-import { BaseUserDto, TokenResponseDto } from "shared-types";
 import { ApiResponse } from "~types/types.apiResponse";
 import { AxiosError } from "axios";
 import useAxios from "~/hooks/useAxios";
+import { BaseUserDto } from "~/types/types.base-user";
+import { TokenResponseDto } from "~/types/types.token-response";
 
 const initialApiResponse: ApiResponse = {
   status: 0,
@@ -32,8 +33,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode | React.R
     const storedUser = localStorage.getItem("user");
     const storedJwt = localStorage.getItem("token");
 
-    if (storedUser) setUser(JSON.parse(storedUser));
-    if (storedJwt) setToken(JSON.parse(storedJwt));
+    let user = storedUser !== undefined && storedUser !== null && storedUser !== "undefined" ? JSON.parse(storedUser) : null;
+    let jwt = storedJwt !== undefined && storedJwt !== null && storedJwt !== "undefined" ? JSON.parse(storedJwt) : null;
+
+    setUser(user);
+    setToken(jwt);
   }, []);
 
   // Login function
@@ -89,8 +93,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode | React.R
     const storedUser = localStorage.getItem("user");
     const storedJwt = localStorage.getItem("token");
 
-    if (storedUser) setUser(JSON.parse(storedUser));
-    if (storedJwt) setToken(JSON.parse(storedJwt));
+    let user = storedUser !== undefined && storedUser !== null && storedUser !== "undefined" ? JSON.parse(storedUser) : null;
+    let jwt = storedJwt !== undefined && storedJwt !== null && storedJwt !== "undefined" ? JSON.parse(storedJwt) : null;
+
+    setUser(user);
+    setToken(jwt);
   }, []);
 
   const contextValue: IAuthContext = {

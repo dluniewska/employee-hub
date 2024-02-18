@@ -2,8 +2,8 @@
 import { Controller, Post, Body, HttpException, HttpStatus, Get, Req } from '@nestjs/common';
 import { catchError } from 'rxjs/operators';
 import { AuthService } from './auth.service';
-import { LoginCredentialsDto } from 'shared-types';
 import { Observable } from 'rxjs';
+import { LoginCredentialsDto } from './dto/login-credentials.dto';
 
 @Controller('auth')
 export class AuthController {

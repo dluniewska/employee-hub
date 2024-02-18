@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '~hooks/useAuth';
 import { Button } from "~ui/Button";
-import { Roles } from "shared-types";
 
 const Navbar = () => {
 
@@ -37,7 +36,7 @@ const Navbar = () => {
                             <div className="w-full flex-1 flex flex-row justify-end items-center">
 
                                 {
-                                    user?.role === Roles.ADMIN && <Button className='mx-1' variant="secondary">Zarządzaj</Button>
+                                    user?.role === "ADMIN" && <Button className='mx-1' variant="secondary">Zarządzaj</Button>
                                 }
 
                                 <Button className='mx-1' onClick={() => handleUnitsClick()} variant="secondary">Zespoły</Button>

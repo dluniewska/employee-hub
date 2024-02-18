@@ -2,9 +2,9 @@ import { AppModule } from "./../../app.module";
 import { Test, TestingModule } from "@nestjs/testing";
 import { INestApplication, ValidationPipe } from "@nestjs/common";
 import * as request from "supertest";
-import { PrismaService } from "./../../database/prisma.service";
+import { PrismaService } from "./../../database/prisma/prisma.service";
 import { useContainer } from "class-validator";
-import { UserEntity } from "../types/entities/user.entity";
+import { UserEntity } from "../entities/user.prisma.entity";
 
 //e2e tests
 

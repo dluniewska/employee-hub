@@ -1,6 +1,6 @@
 import { Knex } from 'knex';
-import { Roles } from 'shared-types';
 import * as bcrypt from 'bcrypt';
+import { Roles } from '../../types/roles.enum';
 
 const genPassword = () => bcrypt.hash('zaq1@WSX', 10);
 

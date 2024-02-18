@@ -1,9 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { User } from '../types/types.user';
+import { User } from '../types/user.type';
 import { KnexService } from 'src/database/knex.service';
-import { BaseUserDto, LoginCredentialsDto, TokenResponseDto } from 'shared-types';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
+import { LoginCredentialsDto } from 'src/types/login-credentials.type';
+import { BaseUserDto } from 'src/types/base-user.type';
+import { TokenResponseDto } from 'src/types/token-response.type';
 
 @Injectable()
 export class AuthService {
